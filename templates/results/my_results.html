@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}My Results - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-user"></i> My Performance Results</h2>
+
+    <div class="alert alert-secondary">
+        <i class="fas fa-info-circle"></i>
+        Feedback questions are shown based on actual working relationships. Employees are evaluated only on areas where evaluators actively interact with them. Extreme high and low scores are automatically excluded to ensure fairness.
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h6 class="text-muted">KPI Score (60%)</h6>
+                    <h2 class="text-primary">{{ performance.kpi_score }}</h2>
+                    <small class="text-muted">Out of 5.0</small>
+                    <div class="mt-2">
+                        <small class="text-muted">{{ performance.kpi_count }} out of {{ performance.kpi_expected }} evaluation{{ 's' if performance.kpi_expected != 1 else '' }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h6 class="text-muted">360 Feedback Score (40%)</h6>
+                    <h2 class="text-success">{{ performance.feedback_score }}</h2>
+                    <small class="text-muted d-block mt-2">
+                        <i class="fas fa-info-circle"></i> Trimmed mean (excluding the top 10% and bottom 10% of scores)
+                    </small>
+                    <small class="text-muted">Out of 5.0</small>
+                    <div class="mt-2">
+                        <small class="text-muted">{{ performance.feedback_count }} out of {{ performance.feedback_expected }} evaluation{{ 's' if performance.feedback_expected != 1 else '' }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-primary text-white">
+                <div class="card-body">
+                    <h6>Final Score</h6>
+                    <h2>{{ performance.final_score }}</h2>
+                    <small>Out of 5.0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h6 class="text-muted">Confidence Level</h6>
+                    <div class="progress mb-2" style="height: 30px;">
+                        <div class="progress-bar text-white bg-{{ 'success' if performance.confidence >= 0.8 else 'info' if performance.confidence >= 0.65 else 'warning' if performance.confidence >= 0.3 else 'danger' }}" 
+                             role="progressbar" 
+                             style="width: {{ performance.confidence_percentage }}%">
+                            <strong>{{ performance.confidence_percentage }}%</strong>
+                        </div>
+                    </div>
+                    <small class="text-muted mt-1 d-block">
+                        <strong>{{ performance.confidence_label }}</strong> 
+                        ({{ performance.feedback_count }} evaluator{{ 's' if performance.feedback_count != 1 else '' }})
+                    </small>
+                    
+                    <!-- 4-Pillar Confidence Breakdown -->
+                    {% if performance.confidence_pillars %}
+                    <div class="mt-3">
+                        <button class="btn btn-sm btn-outline-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#pillarBreakdown" aria-expanded="false">
+                            <i class="fas fa-chart-pie"></i> View 4-Pillar Breakdown
+                        </button>
+                        <div class="collapse mt-2" id="pillarBreakdown">
+                            <div class="card card-body bg-light">
+                                <small class="text-muted mb-2"><strong>Confidence Quality Model:</strong></small>
+                                
+                                <!-- Pillar 1: Number of Evaluations -->
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <small><i class="fas fa-users text-primary"></i> Evaluations (40%)</small>
+                                        <small><strong>{{ performance.confidence_pillars.pillar_1_count }}%</strong></small>
+                                    </div>
+                                    <div class="progress" style="height: 15px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" 
+                                             style="width: {{ (performance.confidence_pillars.pillar_1_count / 40 * 100) }}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Pillar 2: Source Diversity -->
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <small><i class="fas fa-sitemap text-info"></i> Diversity (25%)</small>
+                                        <small><strong>{{ performance.confidence_pillars.pillar_2_diversity }}%</strong></small>
+                                    </div>
+                                    <div class="progress" style="height: 15px;">
+                                        <div class="progress-bar bg-info" role="progressbar" 
+                                             style="width: {{ (performance.confidence_pillars.pillar_2_diversity / 25 * 100) }}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Pillar 3: Score Consistency -->
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <small><i class="fas fa-chart-line text-success"></i> Consistency (25%)</small>
+                                        <small><strong>{{ performance.confidence_pillars.pillar_3_consistency }}%</strong></small>
+                                    </div>
+                                    <div class="progress" style="height: 15px;">
+                                        <div class="progress-bar bg-success" role="progressbar" 
+                                             style="width: {{ (performance.confidence_pillars.pillar_3_consistency / 25 * 100) }}%">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Pillar 4: Recency -->
+                                <div class="mb-2">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <small><i class="fas fa-clock text-warning"></i> Recency (10%)</small>
+                                        <small><strong>{{ performance.confidence_pillars.pillar_4_recency }}%</strong></small>
+                                    </div>
+                                    <div class="progress" style="height: 15px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" 
+                                             style="width: {{ (performance.confidence_pillars.pillar_4_recency / 10 * 100) }}%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mt-2">
+                        <small class="text-muted d-block">KPI: {{ performance.kpi_count }} out of {{ performance.kpi_expected }}</small>
+                        <small class="text-muted d-block">360: {{ performance.feedback_count }} out of {{ performance.feedback_expected }}</small>
+                    </div>
+                    <small class="text-muted d-block mt-1">
+                        <i class="fas fa-info-circle"></i> Confidence reflects reliability of 360-degree feedback only (KPI evaluations excluded)
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- KPI Breakdown -->
+    {% if kpi_breakdown %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5>KPI Breakdown</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>KPI</th>
+                            <th>Score</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in kpi_breakdown %}
+                        <tr>
+                            <td>
+                                <strong>{{ item.kpi.kpi_name }}</strong>
+                                {% if item.kpi.description %}
+                                    <br><small class="text-muted">{{ item.kpi.description }}</small>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if item.score >= 4 else 'warning' if item.score >= 3 else 'danger' }}">
+                                    {{ "%.2f"|format(item.score) }}
+                                </span>
+                            </td>
+                            <td>{{ item.kpi.weight }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- 360 Feedback by Category -->
+    {% if feedback_by_category %}
+    <div class="card">
+        <div class="card-header">
+            <h5>360-Degree Feedback by Category</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Average Score</th>
+                            <th>Number of Responses</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category, data in feedback_by_category.items() %}
+                        <tr>
+                            <td><strong>{{ category }}</strong></td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if data.average >= 4 else 'warning' if data.average >= 3 else 'danger' }}">
+                                    {{ "%.2f"|format(data.average) }}
+                                </span>
+                            </td>
+                            <td>{{ data.count }} response{{ 's' if data.count != 1 else '' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Open-Ended Feedback Responses -->
+    {% if open_ended_by_question %}
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5><i class="fas fa-comment-dots"></i> Open-Ended Feedback Responses</h5>
+        </div>
+        <div class="card-body">
+            {% for question_text, responses in open_ended_by_question.items() %}
+            <div class="mb-4">
+                <h6 class="text-primary mb-3">
+                    <i class="fas fa-question-circle"></i> {{ question_text }}
+                </h6>
+                <div class="list-group">
+                    {% for response_data in responses %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between mb-2">
+                            <small class="text-muted">
+                                <i class="fas fa-user"></i> Response from evaluator
+                            </small>
+                            <small class="text-muted">
+                                <i class="fas fa-clock"></i> {{ response_data.submitted_at.strftime('%Y-%m-%d %H:%M') if response_data.submitted_at else 'N/A' }}
+                            </small>
+                        </div>
+                        <p class="mb-0">{{ response_data.response }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if not loop.last %}
+            <hr>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Cycle Information -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Evaluation Cycle Information</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Cycle:</strong> {{ cycle.name }}</p>
+            <p><strong>Period:</strong> {{ cycle.start_date }} to {{ cycle.end_date }}</p>
+            {% if cycle.description %}
+                <p><strong>Description:</strong> {{ cycle.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

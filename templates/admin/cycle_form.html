@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-sync-alt"></i> {{ title }}</h2>
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                
+                <div class="mb-3">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                    {% if form.name.errors %}
+                        <div class="text-danger">
+                            {% for error in form.name.errors %}<small>{{ error }}</small>{% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        {{ form.start_date.label(class="form-label") }}
+                        {{ form.start_date(class="form-control", type="date") }}
+                        {% if form.start_date.errors %}
+                            <div class="text-danger">
+                                {% for error in form.start_date.errors %}<small>{{ error }}</small>{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        {{ form.end_date.label(class="form-label") }}
+                        {{ form.end_date(class="form-control", type="date") }}
+                        {% if form.end_date.errors %}
+                            <div class="text-danger">
+                                {% for error in form.end_date.errors %}<small>{{ error }}</small>{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    {{ form.description.label(class="form-label") }}
+                    {{ form.description(class="form-control", rows="3") }}
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Evaluation types in this round</label>
+                    <div class="form-check">
+                        {{ form.include_kpi(class="form-check-input") }}
+                        {{ form.include_kpi.label(class="form-check-label") }}
+                    </div>
+                    <div class="form-check">
+                        {{ form.include_360(class="form-check-input") }}
+                        {{ form.include_360.label(class="form-check-label") }}
+                    </div>
+                    <small class="text-muted">Select at least one. You can run a round with only KPIs, only 360 feedback, or both.</small>
+                    {% if form.include_360.errors %}
+                        <div class="text-danger">
+                            {% for error in form.include_360.errors %}<small>{{ error }}</small>{% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save
+                </button>
+                <a href="{{ url_for('list_cycles') }}" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

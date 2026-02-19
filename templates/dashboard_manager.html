@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Manager Dashboard - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-tachometer-alt"></i> Manager Dashboard</h2>
+    
+    <!-- Team Overview -->
+    {% if data.latest_cycle %}
+    {% set inc_kpi = data.latest_cycle.include_kpi | default(true) %}
+    {% set inc_360 = data.latest_cycle.include_360 | default(true) %}
+    {% if not inc_360 or not inc_kpi %}
+    <div class="alert alert-info mb-4">
+        <i class="fas fa-info-circle"></i> <strong>This round ({{ data.latest_cycle.name }})</strong>
+        {% if inc_kpi and not inc_360 %}
+            includes <strong>KPI evaluations only</strong>. 360 feedback is not part of this round.
+        {% elif inc_360 and not inc_kpi %}
+            includes <strong>360-degree feedback only</strong>. KPI evaluations are not part of this round.
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="card">
+        <div class="card-header">
+            <h5>Team Performance - {{ data.latest_cycle.name }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Average Score</th>
+                            <th>Evaluations Received</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp_id, report in data.report_data.items() %}
+                        <tr>
+                            <td>{{ report.employee.full_name }}</td>
+                            <td>{{ report.employee.department }}</td>
+                            <td>{{ report.employee.role }}</td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if report.average >= 4 else 'warning' if report.average >= 3 else 'danger' }}">
+                                    {{ "%.2f"|format(report.average) }}
+                                </span>
+                            </td>
+                            <td>{{ report.total_evaluations }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <a href="{{ url_for('department_report') }}" class="btn btn-primary mt-3">
+                <i class="fas fa-chart-bar"></i> View Detailed Report
+            </a>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> No active evaluation cycle.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

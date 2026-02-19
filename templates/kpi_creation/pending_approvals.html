@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block title %}Pending KPI Approvals - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-check-circle"></i> Pending KPI Approvals</h2>
+    
+    {% if pending_kpis %}
+        {% if kpis_by_creator %}
+            {% for creator_name, creator_kpis in kpis_by_creator.items() %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-user"></i> {{ creator_name }}</h5>
+                </div>
+                <div class="card-body">
+                    {% for kpi in creator_kpis %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h6><strong>{{ kpi.kpi_name }}</strong></h6>
+                                    <p class="text-muted mb-2">{{ kpi.description or 'No description provided' }}</p>
+                                    <div class="mb-2">
+                                        {% set assigned = kpi.assigned_employees.all() %}
+                                        {% if kpi.applies_to_all %}
+                                            <span class="badge bg-info">All employees</span>
+                                        {% elif assigned %}
+                                            <span class="badge bg-info">Assigned to: {{ assigned|map(attribute='full_name')|join(', ') }}</span>
+                                        {% else %}
+                                            <span class="badge bg-warning">No employees assigned</span>
+                                        {% endif %}
+                                        <span class="badge bg-primary">Weight: {{ kpi.weight }}%</span>
+                                    </div>
+                                    <small class="text-muted">
+                                        Created: {{ kpi.created_at.strftime('%Y-%m-%d %H:%M') if kpi.created_at else 'N/A' }}
+                                    </small>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <form method="POST" action="{{ url_for('approve_kpi', kpi_id=kpi.kpi_id) }}" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Approve this KPI?')">
+                                            <i class="fas fa-check"></i> Approve
+                                        </button>
+                                    </form>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#declineModal{{ kpi.kpi_id }}">
+                                        <i class="fas fa-times"></i> Decline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decline Modal -->
+                    <div class="modal fade" id="declineModal{{ kpi.kpi_id }}" tabindex="-1" aria-labelledby="declineModalLabel{{ kpi.kpi_id }}" aria-hidden="true" data-kpi-id="{{ kpi.kpi_id }}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="declineModalLabel{{ kpi.kpi_id }}">Decline KPI: {{ kpi.kpi_name }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form method="POST" action="{{ url_for('decline_kpi', kpi_id=kpi.kpi_id) }}" class="decline-kpi-form" data-kpi-id="{{ kpi.kpi_id }}">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <div class="modal-body">
+                                        <p>Please provide a reason for declining this KPI:</p>
+                                        <div class="mb-3">
+                                            <label for="decline_reason{{ kpi.kpi_id }}" class="form-label">Reason <span class="text-danger">*</span></label>
+                                            <textarea name="decline_reason" id="decline_reason{{ kpi.kpi_id }}" class="form-control decline-reason-textarea" rows="4" required placeholder="Enter reason for declining this KPI..."></textarea>
+                                            <div class="invalid-feedback">Please provide a reason for declining.</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-danger decline-submit-btn">
+                                            <i class="fas fa-times"></i> Decline KPI
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No KPIs pending approval.
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> No KPIs pending approval.
+        </div>
+    {% endif %}
+</div>
+
+<script>
+// Single script block to handle all decline modals - prevents conflicts and blinking
+document.addEventListener('DOMContentLoaded', function() {
+    // Use event delegation to handle all decline forms
+    document.addEventListener('submit', function(e) {
+        const form = e.target;
+        if (!form.classList.contains('decline-kpi-form')) {
+            return; // Not a decline form, ignore
+        }
+        
+        e.preventDefault(); // Prevent default form submission
+        
+        const kpiId = form.getAttribute('data-kpi-id');
+        const textarea = form.querySelector('.decline-reason-textarea');
+        const submitBtn = form.querySelector('.decline-submit-btn');
+        const modalElement = document.getElementById('declineModal' + kpiId);
+        
+        // Validate reason
+        if (!textarea || !textarea.value.trim()) {
+            if (textarea) {
+                textarea.classList.add('is-invalid');
+                textarea.focus();
+            }
+            return false;
+        }
+        
+        // Disable submit button to prevent double submission
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Declining...';
+        }
+        
+        // Completely close and clean up modal BEFORE any submission
+        if (modalElement) {
+            // Get Bootstrap modal instance
+            const bsModal = bootstrap.Modal.getInstance(modalElement);
+            
+            // Force close modal immediately using Bootstrap API
+            if (bsModal) {
+                bsModal.hide();
+            }
+            
+            // Wait for Bootstrap's hide animation to start, then force cleanup
+            setTimeout(function() {
+                // Remove all modal-related classes and attributes
+                modalElement.classList.remove('show', 'fade');
+                modalElement.style.display = 'none';
+                modalElement.setAttribute('aria-hidden', 'true');
+                modalElement.removeAttribute('aria-modal');
+                modalElement.removeAttribute('role');
+                
+                // Remove all backdrops (there might be multiple)
+                const backdrops = document.querySelectorAll('.modal-backdrop');
+                backdrops.forEach(backdrop => {
+                    backdrop.classList.remove('show', 'fade');
+                    backdrop.style.display = 'none';
+                    backdrop.remove();
+                });
+                
+                // Clean up body completely
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+                
+                // Dispose modal instance to prevent reopening
+                if (bsModal) {
+                    try {
+                        bsModal.dispose();
+                    } catch(e) {
+                        // Ignore disposal errors
+                    }
+                }
+                
+                // Now submit the form after modal is completely gone
+                // Create a completely new form outside the modal DOM
+                const submitForm = document.createElement('form');
+                submitForm.method = 'POST';
+                submitForm.action = form.action;
+                submitForm.style.display = 'none';
+                
+                // Add decline reason
+                const reasonInput = document.createElement('input');
+                reasonInput.type = 'hidden';
+                reasonInput.name = 'decline_reason';
+                reasonInput.value = textarea.value.trim();
+                submitForm.appendChild(reasonInput);
+                
+                // Add CSRF token if present
+                const csrfToken = form.querySelector('input[name="csrf_token"]');
+                if (csrfToken) {
+                    const csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrf_token';
+                    csrfInput.value = csrfToken.value;
+                    submitForm.appendChild(csrfInput);
+                }
+                
+                // Append to body and submit
+                document.body.appendChild(submitForm);
+                submitForm.submit();
+            }, 250); // Wait for modal animation to complete
+        } else {
+            // Fallback: submit immediately if modal not found
+            form.submit();
+        }
+        
+        return false;
+    });
+    
+    // Clear validation on input for all textareas
+    document.addEventListener('input', function(e) {
+        if (e.target.classList.contains('decline-reason-textarea')) {
+            e.target.classList.remove('is-invalid');
+        }
+    });
+    
+    // Reset forms when modals are closed
+    document.addEventListener('hidden.bs.modal', function(e) {
+        const modal = e.target;
+        if (modal.id && modal.id.startsWith('declineModal')) {
+            const form = modal.querySelector('.decline-kpi-form');
+            if (form) {
+                form.reset();
+                const textarea = form.querySelector('.decline-reason-textarea');
+                const submitBtn = form.querySelector('.decline-submit-btn');
+                
+                if (textarea) {
+                    textarea.classList.remove('is-invalid');
+                }
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-times"></i> Decline KPI';
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

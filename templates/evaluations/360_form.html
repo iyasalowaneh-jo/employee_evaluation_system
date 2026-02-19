@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}360-Degree Feedback Form - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-comments"></i> 360-Degree Feedback Form</h2>
+    
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5>Evaluating: {{ evaluatee.full_name }} - {{ cycle.name }}</h5>
+            <p class="mb-0"><small>Department: {{ evaluatee.department }} | Role: {{ evaluatee.role }}</small></p>
+        </div>
+        <div class="card-body">
+            {% if is_fully_submitted %}
+            <div class="alert alert-success">
+                <i class="fas fa-check-circle"></i> <strong>This evaluation has been submitted.</strong> 
+                You can view your responses below, but they cannot be edited after submission.
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Please rate each question on a scale of 1-5, where:
+                <ul class="mb-0 mt-2">
+                    <li><strong>1</strong> = Poor / Needs Improvement</li>
+                    <li><strong>2</strong> = Below Average</li>
+                    <li><strong>3</strong> = Average / Meets Expectations</li>
+                    <li><strong>4</strong> = Good / Above Average</li>
+                    <li><strong>5</strong> = Excellent / Outstanding</li>
+                </ul>
+            </div>
+            {% endif %}
+            
+            <form method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                {% set current_category = '' %}
+                {% for question in questions %}
+                    {% if question.category != current_category %}
+                        {% if current_category != '' %}
+                            </div>
+                        {% endif %}
+                        <div class="mb-4">
+                            <h5 class="border-bottom pb-2 mb-3">{{ question.category }}</h5>
+                        {% set current_category = question.category %}
+                    {% endif %}
+                    <div class="mb-3 p-3 border rounded">
+                        <label class="form-label fw-bold">
+                            {{ question.question_text }}
+                        </label>
+                        {% if question.is_open_ended %}
+                            {# Open-ended question: text area only #}
+                            <div class="mt-2">
+                                <textarea name="open_ended_{{ question.question_id }}" 
+                                          class="form-control" 
+                                          rows="4"
+                                          placeholder="Please provide your detailed response..."
+                                          {% if is_fully_submitted %}readonly{% else %}required{% endif %}>{{ existing_scores.get(question.question_id, {}).get('response', existing_scores.get(question.question_id, {}).get('comment', '')) }}</textarea>
+                                <small class="text-muted">Please provide a detailed response to this question.</small>
+                            </div>
+                        {% else %}
+                            {# Regular question: score + optional comment #}
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="number" 
+                                           name="question_{{ question.question_id }}" 
+                                           class="form-control" 
+                                           min="1" 
+                                           max="5" 
+                                           step="0.1"
+                                           value="{{ existing_scores.get(question.question_id, {}).get('score', '') }}"
+                                           {% if is_fully_submitted %}readonly{% else %}required{% endif %}>
+                                    <small class="text-muted">Rate from 1 (Poor) to 5 (Excellent)</small>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <label class="form-label">Optional Comment:</label>
+                                <textarea name="comment_{{ question.question_id }}" 
+                                          class="form-control" 
+                                          rows="2"
+                                          placeholder="Add any specific feedback or examples..."
+                                          {% if is_fully_submitted %}readonly{% endif %}>{{ existing_scores.get(question.question_id, {}).get('comment', '') }}</textarea>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+                
+                <div class="mt-4 d-flex gap-2">
+                    {% if is_fully_submitted %}
+                        <a href="{{ url_for('my_360_evaluations') }}" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-arrow-left"></i> Back to Evaluations
+                        </a>
+                    {% else %}
+                        <button type="submit" name="action" value="draft" class="btn btn-warning btn-lg">
+                            <i class="fas fa-save"></i> Save as Draft
+                        </button>
+                        <button type="submit" name="action" value="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-paper-plane"></i> Submit 360 Feedback
+                        </button>
+                        <a href="{{ url_for('my_360_evaluations') }}" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                    {% endif %}
+                </div>
+                {% if not is_fully_submitted %}
+                <div class="mt-2">
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle"></i> 
+                        <strong>Save as Draft:</strong> Save your progress and continue editing later. 
+                        <strong>Submit:</strong> Finalize and submit your evaluation (cannot be edited after submission).
+                    </small>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

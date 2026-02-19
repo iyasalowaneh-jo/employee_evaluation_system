@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}My Evaluations - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-file-alt"></i> My Evaluations</h2>
+    
+    <div class="card">
+        <div class="card-body">
+            {% if evaluations %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Cycle</th>
+                            <th>Evaluatee</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Submitted At</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for eval_data in evaluations %}
+                        <tr>
+                            <td>{{ eval_data.cycle.name }}</td>
+                            <td>{{ eval_data.evaluatee.full_name }}</td>
+                            <td>{{ eval_data.evaluatee.department }}</td>
+                            <td>
+                                {% if eval_data.submitted %}
+                                    <span class="badge bg-success">Completed</span>
+                                {% else %}
+                                    <span class="badge bg-warning">Pending</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if eval_data.evaluation %}
+                                    {{ eval_data.evaluation.submitted_at.strftime('%Y-%m-%d %H:%M') }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ url_for('submit_evaluation', cycle_id=eval_data.cycle.cycle_id, evaluatee_id=eval_data.evaluatee.employee_id) }}" 
+                                   class="btn btn-sm btn-{{ 'primary' if not eval_data.submitted else 'secondary' }}">
+                                    <i class="fas fa-{{ 'edit' if eval_data.submitted else 'pencil-alt' }}"></i> 
+                                    {{ 'Edit' if eval_data.submitted else 'Complete' }}
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No evaluations assigned to you yet.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

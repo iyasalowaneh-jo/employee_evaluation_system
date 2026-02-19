@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Evaluation Cycles - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-sync-alt"></i> Evaluation Cycles</h2>
+        {% if has_active_cycle %}
+        <span class="text-muted">
+            <i class="fas fa-info-circle"></i> Close the current active round before creating a new one.
+        </span>
+        {% else %}
+        <a href="{{ url_for('add_cycle') }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create New Cycle
+        </a>
+        {% endif %}
+    </div>
+    
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Cycle Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Includes</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cycle in cycles %}
+                        <tr>
+                            <td><strong>{{ cycle.name }}</strong></td>
+                            <td>{{ cycle.start_date }}</td>
+                            <td>{{ cycle.end_date }}</td>
+                            <td>
+                                {% set has_kpi = cycle.include_kpi if cycle.include_kpi is not none else true %}
+                                {% set has_360 = cycle.include_360 if cycle.include_360 is not none else true %}
+                                {% if has_kpi and has_360 %}
+                                    <span class="badge bg-primary">KPI & 360</span>
+                                {% elif has_kpi %}
+                                    <span class="badge bg-info">KPI only</span>
+                                {% elif has_360 %}
+                                    <span class="badge bg-secondary">360 only</span>
+                                {% else %}
+                                    <span class="badge bg-warning">—</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if cycle.status == 'active' else 'secondary' if cycle.status == 'completed' else 'warning' }}">
+                                    {{ cycle.status }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if cycle.status == 'draft' %}
+                                <form method="POST" action="{{ url_for('assign_evaluators_route', cycle_id=cycle.cycle_id) }}" style="display: inline;">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Assign evaluators for this cycle? This will activate the round.')" title="Assign evaluators and start this evaluation round">
+                                        <i class="fas fa-random"></i> Assign Evaluators
+                                    </button>
+                                </form>
+                                {% elif cycle.status == 'active' %}
+                                <form method="POST" action="{{ url_for('close_cycle', cycle_id=cycle.cycle_id) }}" style="display: inline;">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('Close this evaluation round? No new evaluations will be accepted.')" title="Close this evaluation round">
+                                        <i class="fas fa-lock"></i> Close Round
+                                    </button>
+                                </form>
+                                {% elif cycle.status == 'completed' %}
+                                <span class="text-muted small">Closed</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

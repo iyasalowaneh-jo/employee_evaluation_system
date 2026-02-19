@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Department Report - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-chart-bar"></i> Department Performance Report</h2>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>Report for Cycle: {{ cycle.name }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Average Score</th>
+                            <th>Total Evaluations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for emp_id, report in report_data.items() %}
+                        <tr>
+                            <td><strong>{{ report.employee.full_name }}</strong></td>
+                            <td>{{ report.employee.department }}</td>
+                            <td>{{ report.employee.role }}</td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if report.average >= 4 else 'warning' if report.average >= 3 else 'danger' }}">
+                                    {{ "%.2f"|format(report.average) }}
+                                </span>
+                            </td>
+                            <td>{{ report.total_evaluations }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

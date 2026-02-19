@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}KPI Evaluation Form - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-chart-line"></i> KPI Evaluation Form</h2>
+    
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5>Evaluating: {{ evaluatee.full_name }} - {{ cycle.name }}</h5>
+            <p class="mb-0"><small>Department: {{ evaluatee.department }} | Role: {{ evaluatee.role }}</small></p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Please rate each KPI on a scale of 1-5, where:
+                <ul class="mb-0 mt-2">
+                    <li><strong>1</strong> = Poor / Needs Improvement</li>
+                    <li><strong>2</strong> = Below Average</li>
+                    <li><strong>3</strong> = Average / Meets Expectations</li>
+                    <li><strong>4</strong> = Good / Above Average</li>
+                    <li><strong>5</strong> = Excellent / Outstanding</li>
+                </ul>
+            </div>
+            
+            <form method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <h6 class="mb-3">KPI Scores</h6>
+                
+                {% for kpi in kpis %}
+                <div class="mb-4 p-3 border rounded">
+                    <label class="form-label fw-bold">
+                        {{ kpi.kpi_name }}
+                        {% if kpi.weight %}
+                            <span class="badge bg-secondary">Weight: {{ kpi.weight }}</span>
+                        {% endif %}
+                    </label>
+                    {% if kpi.description %}
+                        <p class="text-muted small mb-2">{{ kpi.description }}</p>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="number" 
+                                   name="kpi_{{ kpi.kpi_id }}" 
+                                   class="form-control" 
+                                   min="1" 
+                                   max="5" 
+                                   step="0.1"
+                                   value="{{ existing_scores.get(kpi.kpi_id|string, '') }}"
+                                   required>
+                            <small class="text-muted">Score: 1 (Poor) to 5 (Excellent)</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Overall Comments / Justification</label>
+                    <textarea name="comments" 
+                              class="form-control" 
+                              rows="5"
+                              placeholder="Provide justification for the scores given..."
+                              required>{{ existing_comments }}</textarea>
+                    <small class="text-muted">All KPI scores require justification</small>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Evaluation Status</label>
+                    <select name="status" class="form-select">
+                        <option value="draft" {% if existing_status == 'draft' %}selected{% endif %}>Draft (Save for later)</option>
+                        <option value="pending_review" {% if existing_status == 'pending_review' %}selected{% endif %}>Submit for Review</option>
+                    </select>
+                    <small class="text-muted">Select "Submit for Review" when ready for approval</small>
+                </div>
+                
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-save"></i> Save KPI Evaluation
+                    </button>
+                    <a href="{{ url_for('my_kpi_evaluations') }}" class="btn btn-secondary btn-lg">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

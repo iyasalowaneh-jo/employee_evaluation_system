@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+
+{% block title %}KPI Results - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-chart-bar"></i> KPI Results</h2>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>KPI Performance Results - {{ cycle.name }}</h5>
+            {% if viewer_role in ['CEO', 'Technical Manager', 'Unit Manager'] %}
+                <p class="mb-0 text-muted">You have access to view all results in your scope</p>
+            {% else %}
+                <p class="mb-0 text-muted">You can view results for your department only</p>
+            {% endif %}
+        </div>
+        <div class="card-body">
+            {% if results %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Department</th>
+                            <th>Role</th>
+                            <th>Average Score</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for result in results %}
+                        <tr>
+                            <td><strong>{{ result.employee.full_name }}</strong></td>
+                            <td>{{ result.employee.department }}</td>
+                            <td>{{ result.employee.role }}</td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if result.status_info.average_score >= 4 else 'warning' if result.status_info.average_score >= 3 else 'danger' }}">
+                                    {{ "%.2f"|format(result.status_info.average_score) }}
+                                </span>
+                                <span class="ms-2">
+                                    {% if result.status_info.average_score >= 4.5 %}
+                                        <span class="badge bg-success">Excellent</span>
+                                    {% elif result.status_info.average_score >= 4 %}
+                                        <span class="badge bg-success">Very Good</span>
+                                    {% elif result.status_info.average_score >= 3.5 %}
+                                        <span class="badge bg-info">Good</span>
+                                    {% elif result.status_info.average_score >= 3 %}
+                                        <span class="badge bg-warning">Satisfactory</span>
+                                    {% elif result.status_info.average_score >= 2 %}
+                                        <span class="badge bg-warning">Needs Improvement</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Unsatisfactory</span>
+                                    {% endif %}
+                                </span>
+                            </td>
+                            <td>
+                                {% if result.status_info.status == 'not_started' %}
+                                    <span class="badge bg-secondary">Not Started</span>
+                                {% elif result.status_info.status == 'draft' %}
+                                    <span class="badge bg-warning">Draft</span>
+                                {% elif result.status_info.status == 'pending_review' %}
+                                    <span class="badge bg-info">Pending Review</span>
+                                {% elif result.status_info.status == 'approved' %}
+                                    <span class="badge bg-success">Approved</span>
+                                {% elif result.status_info.status == 'completed' %}
+                                    <span class="badge bg-primary">Completed</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ result.status_info.status }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if viewer_role in ['CEO', 'Technical Manager'] and result.status_info.needs_approval %}
+                                    {% for eval in result.status_info.evaluations %}
+                                        {% if eval.status == 'pending_review' %}
+                                        <!-- Review Button (CEO only) -->
+                                        {% if viewer_role == 'CEO' and result.evaluation_details %}
+                                            {% for detail in result.evaluation_details %}
+                                                {% if detail.evaluation.evaluation_id == eval.evaluation_id %}
+                                                <button type="button" class="btn btn-sm btn-info me-2" data-bs-toggle="modal" data-bs-target="#reviewModal{{ eval.evaluation_id }}">
+                                                    <i class="fas fa-eye"></i> Review
+                                                </button>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        
+                                        <!-- Approve Button -->
+                                        <form method="POST" action="{{ url_for('approve_kpi_evaluation', evaluation_id=eval.evaluation_id) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Approve this KPI evaluation?')">
+                                                <i class="fas fa-check"></i> Approve
+                                            </button>
+                                        </form>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No KPI results available at this time.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Review Modals for CEO -->
+{% if viewer_role == 'CEO' %}
+    {% for result in results %}
+        {% if result.evaluation_details %}
+            {% for detail in result.evaluation_details %}
+                {% set eval = detail.evaluation %}
+                <div class="modal fade" id="reviewModal{{ eval.evaluation_id }}" tabindex="-1" aria-labelledby="reviewModalLabel{{ eval.evaluation_id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title" id="reviewModalLabel{{ eval.evaluation_id }}">
+                                    <i class="fas fa-clipboard-check"></i> Review KPI Evaluation
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Employee Information -->
+                                <div class="card mb-3">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0"><i class="fas fa-user"></i> Employee Information</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p><strong>Name:</strong> {{ result.employee.full_name }}</p>
+                                                <p><strong>Role:</strong> {{ result.employee.role }}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><strong>Department:</strong> {{ result.employee.department }}</p>
+                                                <p><strong>Evaluated By:</strong> {{ detail.evaluator.full_name }} ({{ detail.evaluator.role }})</p>
+                                            </div>
+                                        </div>
+                                        <p class="mb-0"><strong>Submitted:</strong> {{ detail.submitted_at.strftime('%Y-%m-%d %H:%M') if detail.submitted_at else 'N/A' }}</p>
+                                    </div>
+                                </div>
+
+                                <!-- KPI Scores -->
+                                <div class="card mb-3">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0"><i class="fas fa-chart-line"></i> KPI Scores</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        {% if detail.kpi_details %}
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>KPI Name</th>
+                                                        <th>Score</th>
+                                                        <th>Rating</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for kpi_detail in detail.kpi_details %}
+                                                    <tr>
+                                                        <td>
+                                                            <strong>{{ kpi_detail.kpi.kpi_name }}</strong>
+                                                            {% if kpi_detail.kpi.description %}
+                                                            <br><small class="text-muted">{{ kpi_detail.kpi.description }}</small>
+                                                            {% endif %}
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge bg-{{ 'success' if kpi_detail.score >= 4 else 'warning' if kpi_detail.score >= 3 else 'danger' }}" style="font-size: 1em; padding: 6px 10px;">
+                                                                {{ "%.2f"|format(kpi_detail.score) }}
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            {% if kpi_detail.score >= 4.5 %}
+                                                                <span class="badge bg-success">Excellent</span>
+                                                            {% elif kpi_detail.score >= 4 %}
+                                                                <span class="badge bg-success">Very Good</span>
+                                                            {% elif kpi_detail.score >= 3.5 %}
+                                                                <span class="badge bg-info">Good</span>
+                                                            {% elif kpi_detail.score >= 3 %}
+                                                                <span class="badge bg-warning">Satisfactory</span>
+                                                            {% elif kpi_detail.score >= 2 %}
+                                                                <span class="badge bg-warning">Needs Improvement</span>
+                                                            {% else %}
+                                                                <span class="badge bg-danger">Unsatisfactory</span>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr class="table-info">
+                                                        <th>Average Score</th>
+                                                        <th>
+                                                            <span class="badge bg-{{ 'success' if result.status_info.average_score >= 4 else 'warning' if result.status_info.average_score >= 3 else 'danger' }}" style="font-size: 1.1em; padding: 8px 12px;">
+                                                                {{ "%.2f"|format(result.status_info.average_score) }}
+                                                            </span>
+                                                        </th>
+                                                        <th>
+                                                            {% if result.status_info.average_score >= 4.5 %}
+                                                                <span class="badge bg-success" style="font-size: 1.1em; padding: 8px 12px;">Excellent</span>
+                                                            {% elif result.status_info.average_score >= 4 %}
+                                                                <span class="badge bg-success" style="font-size: 1.1em; padding: 8px 12px;">Very Good</span>
+                                                            {% elif result.status_info.average_score >= 3.5 %}
+                                                                <span class="badge bg-info" style="font-size: 1.1em; padding: 8px 12px;">Good</span>
+                                                            {% elif result.status_info.average_score >= 3 %}
+                                                                <span class="badge bg-warning" style="font-size: 1.1em; padding: 8px 12px;">Satisfactory</span>
+                                                            {% elif result.status_info.average_score >= 2 %}
+                                                                <span class="badge bg-warning" style="font-size: 1.1em; padding: 8px 12px;">Needs Improvement</span>
+                                                            {% else %}
+                                                                <span class="badge bg-danger" style="font-size: 1.1em; padding: 8px 12px;">Unsatisfactory</span>
+                                                            {% endif %}
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                        {% else %}
+                                        <p class="text-muted">No KPI scores available.</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!-- Comments/Justification -->
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0"><i class="fas fa-comment-alt"></i> Comments & Justification</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        {% if detail.comments %}
+                                        <div class="alert alert-light">
+                                            <p class="mb-0" style="white-space: pre-wrap;">{{ detail.comments }}</p>
+                                        </div>
+                                        {% else %}
+                                        <p class="text-muted"><em>No comments or justification provided.</em></p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    <i class="fas fa-times"></i> Close
+                                </button>
+                                <form method="POST" action="{{ url_for('approve_kpi_evaluation', evaluation_id=eval.evaluation_id) }}" style="display: inline;">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to approve this KPI evaluation?')">
+                                        <i class="fas fa-check-circle"></i> Approve Evaluation
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endblock %}

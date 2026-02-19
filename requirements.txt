@@ -1,0 +1,17 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+WTForms
+Werkzeug
+SQLAlchemy
+pymysql
+cryptography
+pandas
+openpyxl
+bcrypt
+python-dotenv
+plotly
+kaleido
+email-validator
+Pillow

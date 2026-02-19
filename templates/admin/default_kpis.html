@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Default KPIs Management - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-star"></i> Default KPIs Management</h2>
+        <a href="{{ url_for('list_kpis') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to All KPIs
+        </a>
+    </div>
+    
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i>
+        <strong>Default KPIs:</strong> These are pre-loaded system KPIs that can be edited, deleted, or replaced. 
+        Changes to default KPIs will affect future evaluations.
+    </div>
+    
+    {% if kpis_by_role %}
+        {% for role, kpis in kpis_by_role.items() %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-users"></i> {{ role }}
+                    <span class="badge bg-info ms-2">{{ kpis|length }} KPIs</span>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>KPI Name</th>
+                                <th>Description</th>
+                                <th>Assigned To</th>
+                                <th>Weight</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for kpi in kpis %}
+                            <tr>
+                                <td>
+                                    <strong>{{ kpi.kpi_name }}</strong>
+                                    <span class="badge bg-info ms-1">
+                                        <i class="fas fa-star"></i> Default
+                                    </span>
+                                </td>
+                                <td>{{ kpi.description or '-' }}</td>
+                                <td>
+                                    {% if kpi.applies_to_all %}All employees
+                                    {% else %}
+                                        {% set emps = kpi.assigned_employees.all() %}
+                                        {% if emps %}{{ emps|map(attribute='full_name')|join(', ') }}{% else %}-{% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>{{ kpi.weight }}%</td>
+                                <td>
+                                    <span class="badge bg-{{ 'success' if kpi.status == 'approved' else 'warning' if kpi.status == 'pending_review' else 'danger' if kpi.status == 'declined' else 'secondary' }}">
+                                        {{ kpi.status|title }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a href="{{ url_for('admin_edit_kpi', kpi_id=kpi.kpi_id) }}" class="btn btn-outline-primary" title="Edit">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <form method="POST" action="{{ url_for('admin_delete_kpi', kpi_id=kpi.kpi_id) }}" style="display:inline;" 
+                                              onsubmit="return confirm('Are you sure you want to delete this default KPI? This action cannot be undone.');">
+                                            <button type="submit" class="btn btn-outline-danger" title="Delete">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                        {% if not kpi.is_active %}
+                                            <form method="POST" action="{{ url_for('toggle_kpi_status', kpi_id=kpi.kpi_id) }}" style="display:inline;">
+                                                <button type="submit" class="btn btn-outline-success" title="Activate">
+                                                    <i class="fas fa-check"></i> Activate
+                                                </button>
+                                            </form>
+                                        {% else %}
+                                            <form method="POST" action="{{ url_for('toggle_kpi_status', kpi_id=kpi.kpi_id) }}" style="display:inline;">
+                                                <button type="submit" class="btn btn-outline-warning" title="Deactivate">
+                                                    <i class="fas fa-times"></i> Deactivate
+                                                </button>
+                                            </form>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i> No default KPIs found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

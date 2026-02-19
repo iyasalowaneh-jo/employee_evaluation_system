@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+    
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.total_employees }}</div>
+                <div class="text-muted">Total Employees</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.total_kpis }}</div>
+                <div class="text-muted">Active KPIs</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.active_cycles }}</div>
+                <div class="text-muted">Active Cycles</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card">
+                <div class="stat-number">{{ "%.1f"|format(data.completion_rate) }}%</div>
+                <div class="text-muted">Completion Rate</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Active Cycle Info -->
+    {% if data.latest_cycle %}
+    <div class="card">
+        <div class="card-header">
+            <h5>Current Evaluation Cycle: {{ data.latest_cycle.name }}</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Period:</strong> {{ data.latest_cycle.start_date }} to {{ data.latest_cycle.end_date }}</p>
+            <p><strong>Status:</strong> <span class="badge bg-success">{{ data.latest_cycle.status }}</span></p>
+            <p><strong>This round includes:</strong>
+                {% set inc_kpi = data.latest_cycle.include_kpi | default(true) %}
+                {% set inc_360 = data.latest_cycle.include_360 | default(true) %}
+                {% if inc_kpi and inc_360 %}
+                    <span class="badge bg-primary">KPI evaluations</span> and <span class="badge bg-secondary">360-degree feedback</span>
+                {% elif inc_kpi %}
+                    <span class="badge bg-primary">KPI evaluations only</span> (no 360 this round)
+                {% elif inc_360 %}
+                    <span class="badge bg-secondary">360-degree feedback only</span> (no KPI evaluations this round)
+                {% else %}
+                    <span class="text-muted">—</span>
+                {% endif %}
+            </p>
+            {% if data.latest_cycle.description %}
+                <p><strong>Description:</strong> {{ data.latest_cycle.description }}</p>
+            {% endif %}
+            <a href="{{ url_for('list_cycles') }}" class="btn btn-primary">
+                <i class="fas fa-cog"></i> Manage Cycles
+            </a>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> No active evaluation cycle. 
+        <a href="{{ url_for('add_cycle') }}">Create a new cycle</a>
+    </div>
+    {% endif %}
+    
+    <!-- Quick Actions -->
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                    <h5>Employee Management</h5>
+                    <a href="{{ url_for('list_employees') }}" class="btn btn-primary mt-2">
+                        Manage Employees
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                    <h5>KPI Management</h5>
+                    <a href="{{ url_for('list_kpis') }}" class="btn btn-success mt-2" aria-label="Go to KPI Management">
+                        <i class="fas fa-chart-line"></i> Manage KPIs
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-sync-alt fa-3x text-warning mb-3"></i>
+                    <h5>Evaluation Cycles</h5>
+                    <a href="{{ url_for('list_cycles') }}" class="btn btn-warning mt-2">
+                        Manage Cycles
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

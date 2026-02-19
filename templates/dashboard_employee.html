@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}My Dashboard - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-tachometer-alt"></i> My Dashboard</h2>
+
+    {% if data.latest_cycle %}
+    {% set inc_kpi = data.latest_cycle.include_kpi | default(true) %}
+    {% set inc_360 = data.latest_cycle.include_360 | default(true) %}
+    {% if not inc_360 or not inc_kpi %}
+    <div class="alert alert-info mb-4">
+        <i class="fas fa-info-circle"></i> <strong>This evaluation round ({{ data.latest_cycle.name }})</strong>
+        {% if inc_kpi and not inc_360 %}
+            includes <strong>KPI evaluations only</strong>. 360-degree feedback is not part of this round.
+        {% elif inc_360 and not inc_kpi %}
+            includes <strong>360-degree feedback only</strong>. KPI evaluations are not part of this round.
+        {% elif not inc_kpi and not inc_360 %}
+            does not include KPI or 360 evaluations.
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endif %}
+    
+    <!-- My Assigned KPIs (only relevant when this round includes KPI) -->
+    {% if data.latest_cycle and not (data.latest_cycle.include_kpi | default(true)) %}
+    <div class="alert alert-secondary mb-4">
+        <i class="fas fa-chart-line"></i> This round does not include KPI evaluations. Your assigned KPIs are for reference; they will be used in rounds that include KPI evaluations.
+    </div>
+    {% endif %}
+    {% if data.assigned_kpis %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0"><i class="fas fa-chart-line"></i> My Assigned KPIs</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>KPI Name</th>
+                            <th>Description</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for kpi in data.assigned_kpis %}
+                        <tr>
+                            <td><strong>{{ kpi.kpi_name }}</strong></td>
+                            <td>{{ kpi.description or '-' }}</td>
+                            <td>{{ kpi.weight }}%</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-muted mb-0 small">
+                <i class="fas fa-info-circle"></i> Total weight: {{ data.assigned_kpis_total_weight }}%
+            </p>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info mb-4">
+        <i class="fas fa-info-circle"></i> No KPIs have been assigned to you yet. Contact your manager if you have questions.
+    </div>
+    {% endif %}
+    
+    <!-- Personal Stats -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.assignments }}</div>
+                <div class="text-muted">Evaluations Assigned</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.completed }}</div>
+                <div class="text-muted">Completed</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card">
+                <div class="stat-number">
+                    {{ "%.0f"|format((data.completed / data.assignments * 100) if data.assignments > 0 else 0) }}%
+                </div>
+                <div class="text-muted">Completion Rate</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Evaluators assigned to evaluate me (360 only) -->
+    {% if data.latest_cycle and (data.latest_cycle.include_360 | default(true)) %}
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.evaluators_assigned_to_me }}</div>
+                <div class="text-muted">Will Evaluate Me</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card stat-card">
+                <div class="stat-number">{{ data.evaluators_completed_for_me }} / {{ data.evaluators_assigned_to_me }}</div>
+                <div class="text-muted">Completed from my evaluators</div>
+            </div>
+        </div>
+    </div>
+    {% elif data.latest_cycle and not (data.latest_cycle.include_360 | default(true)) %}
+    <div class="alert alert-secondary mb-4">
+        <i class="fas fa-comments"></i> This round does not include 360-degree feedback. "Will Evaluate Me" and related counts apply only in rounds that include 360 feedback.
+    </div>
+    {% endif %}
+    
+    <!-- KPI Pending Approval Notice -->
+    {% if data.latest_cycle and data.kpi_pending_approval and not data.kpi_averages %}
+    <div class="alert alert-info mb-4">
+        <i class="fas fa-clock"></i> <strong>Your KPI evaluation is pending CEO approval.</strong> Your manager has submitted your KPI evaluation. Once the CEO approves it, your scores will appear here.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

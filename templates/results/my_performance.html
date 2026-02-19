@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}My Performance - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-chart-line"></i> My Performance Results</h2>
+
+    <div class="alert alert-secondary">
+        <i class="fas fa-info-circle"></i>
+        Feedback questions are shown based on actual working relationships. Employees are evaluated only on areas where evaluators actively interact with them. Extreme high and low scores are automatically excluded to ensure fairness.
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h6 class="text-muted">KPI Score (60%)</h6>
+                    <h2 class="text-primary">{{ "%.2f"|format(kpi_score) }}</h2>
+                    <small class="text-muted">Out of 5.0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h6 class="text-muted">360 Feedback Score (40%)</h6>
+                    <h2 class="text-success">{{ "%.2f"|format(feedback_score) }}</h2>
+                    <small class="text-muted">Out of 5.0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center bg-primary text-white">
+                <div class="card-body">
+                    <h6>Combined Score</h6>
+                    <h2>{{ "%.2f"|format(combined_score) }}</h2>
+                    <small>Out of 5.0</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>360-Degree Feedback by Category</h5>
+        </div>
+        <div class="card-body">
+            {% if feedback_details %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Average Score</th>
+                            <th>Number of Responses</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category, data in feedback_details.items() %}
+                        <tr>
+                            <td><strong>{{ category }}</strong></td>
+                            <td>
+                                <span class="badge bg-{{ 'success' if data.average >= 4 else 'warning' if data.average >= 3 else 'danger' }}">
+                                    {{ "%.2f"|format(data.average) }}
+                                </span>
+                            </td>
+                            <td>{{ data.count }} responses</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No 360 feedback received yet for this cycle.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Evaluation Cycle Information</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Cycle:</strong> {{ cycle.name }}</p>
+            <p><strong>Period:</strong> {{ cycle.start_date }} to {{ cycle.end_date }}</p>
+            {% if cycle.description %}
+                <p><strong>Description:</strong> {{ cycle.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

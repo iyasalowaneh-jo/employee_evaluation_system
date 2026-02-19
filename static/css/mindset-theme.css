@@ -1,0 +1,438 @@
+/* ========================= Mindset Design Tokens ========================= */
+:root {
+  /* Brand */
+  --mindset-green: #008571;
+  --forest-green: #1E5050;
+  --white: #FFFFFF;
+  --charcoal: #4D4D4D;
+
+  /* Accents */
+  --orange: #EDB500;
+  --super-light-g: #EFFFE5;
+  --lime: #B8D124;
+  --burnt-red: #BF6556;
+  --light-grey: #DDDDDD;
+
+  /* Light UI */
+  --app-bg: #FFFFFF;
+  --panel: #FFFFFF;
+  --panel-border: var(--light-grey);
+  --brand-text: var(--charcoal);
+  --brand-muted: #6b7280;
+  --divider: rgba(0,0,0,0.06);
+
+  /* Shared */
+  --brand-primary: var(--mindset-green);
+  --brand-primary-600: var(--forest-green);
+
+  color-scheme: light dark;
+}
+
+/* -------- Dark mode (follows OS/browser) -------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-bg: #0E1211;
+    --panel: #141A19;
+    --panel-border: rgba(255,255,255,0.10);
+    --brand-text: #E6EDEB;
+    --brand-muted: #A3B1AD;
+    --divider: rgba(255,255,255,0.08);
+    --super-light-g: rgba(0,133,113,0.15);
+  }
+}
+
+/* Typography */
+html, body {
+  font-family: "Circular", "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color: var(--brand-text);
+  background: var(--app-bg);
+}
+
+/* Keep logos square */
+img { border-radius: 0 !important; }
+
+/* -------- Header/Navbar -------- */
+.navbar {
+  background: var(--panel) !important;
+  border-bottom: 1px solid var(--divider);
+  box-shadow: 0 1px 0 var(--divider);
+}
+
+.navbar-brand {
+  color: var(--brand-text) !important;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--brand-text) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--brand-primary) !important;
+}
+
+/* -------- Buttons -------- */
+.btn-primary {
+  background-color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+  font-weight: 500;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--brand-primary-600) !important;
+  border-color: var(--brand-primary-600) !important;
+  color: #ffffff !important;
+}
+
+.btn-success {
+  background-color: var(--mindset-green) !important;
+  border-color: var(--mindset-green) !important;
+  color: #ffffff !important;
+}
+
+.btn-success:hover {
+  background-color: var(--forest-green) !important;
+  border-color: var(--forest-green) !important;
+  color: #ffffff !important;
+}
+
+.btn-warning {
+  background-color: var(--orange) !important;
+  border-color: var(--orange) !important;
+  color: var(--charcoal) !important;
+}
+
+.btn-danger {
+  background-color: var(--burnt-red) !important;
+  border-color: var(--burnt-red) !important;
+}
+
+.btn-secondary {
+  background-color: var(--brand-muted) !important;
+  border-color: var(--brand-muted) !important;
+  color: #ffffff !important;
+}
+
+/* -------- Cards -------- */
+.card {
+  border-radius: 12px !important;
+  border: 1px solid var(--panel-border) !important;
+  background: var(--panel) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18) !important;
+  transform: translateY(-1px);
+}
+
+.card-header {
+  background: var(--panel) !important;
+  border-bottom: 1px solid var(--divider) !important;
+  color: var(--brand-text) !important;
+  font-weight: 600;
+}
+
+.card-body {
+  color: var(--brand-text) !important;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  transition: all 160ms ease;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--brand-primary);
+}
+
+/* -------- Forms -------- */
+.form-control, .form-select {
+  background: var(--panel) !important;
+  color: var(--brand-text) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: 8px !important;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--mindset-green) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0,133,113,0.20) !important;
+  background: var(--panel) !important;
+  color: var(--brand-text) !important;
+}
+
+.form-control::placeholder, .form-select::placeholder {
+  color: var(--brand-muted) !important;
+}
+
+.form-label {
+  color: var(--brand-text) !important;
+  font-weight: 500;
+}
+
+/* -------- Alerts -------- */
+.alert {
+  border-radius: 8px !important;
+  border: 1px solid var(--panel-border) !important;
+  background: var(--panel) !important;
+  color: var(--brand-text) !important;
+}
+
+.alert-success {
+  border-left: 4px solid var(--mindset-green) !important;
+  background: var(--super-light-g) !important;
+}
+
+.alert-warning {
+  border-left: 4px solid var(--orange) !important;
+}
+
+.alert-danger, .alert-error {
+  border-left: 4px solid var(--burnt-red) !important;
+}
+
+.alert-info {
+  border-left: 4px solid var(--brand-primary) !important;
+  background: rgba(0,133,113,0.1) !important;
+}
+
+/* -------- Tables -------- */
+.table {
+  color: var(--brand-text) !important;
+  background: var(--panel) !important;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: rgba(0,0,0,0.02) !important;
+}
+
+.table-hover > tbody > tr:hover > td {
+  background-color: var(--super-light-g) !important;
+}
+
+.table thead th {
+  border-bottom: 2px solid var(--divider) !important;
+  color: var(--brand-text) !important;
+  font-weight: 600;
+}
+
+.table td, .table th {
+  border-color: var(--divider) !important;
+}
+
+/* -------- Badges -------- */
+.badge {
+  border-radius: 999px !important;
+  padding: 6px 10px !important;
+  font-weight: 500;
+}
+
+.bg-primary {
+  background-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+}
+
+.bg-success {
+  background-color: var(--mindset-green) !important;
+  color: #ffffff !important;
+}
+
+.bg-warning {
+  background-color: var(--orange) !important;
+  color: var(--charcoal) !important;
+}
+
+.bg-danger {
+  background-color: var(--burnt-red) !important;
+  color: #ffffff !important;
+}
+
+.bg-secondary {
+  background-color: var(--brand-muted) !important;
+  color: #ffffff !important;
+}
+
+.bg-info {
+  background-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Dark green cards/headers - ensure white text for readability */
+.card.bg-primary,
+.card-header.bg-primary {
+  background-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-primary) !important;
+}
+
+.card.bg-primary .card-body,
+.card.bg-primary .card-body *,
+.card-header.bg-primary,
+.card-header.bg-primary * {
+  color: #ffffff !important;
+}
+
+.card.bg-primary .text-muted,
+.card-header.bg-primary .text-muted,
+.card.bg-primary small,
+.card-header.bg-primary small {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Modal headers with dark green background */
+.modal-header.bg-primary {
+  background-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-primary) !important;
+}
+
+.modal-header.bg-primary .modal-title,
+.modal-header.bg-primary * {
+  color: #ffffff !important;
+}
+
+/* -------- Progress Bars -------- */
+.progress {
+  background-color: var(--light-grey) !important;
+  border-radius: 999px !important;
+  height: 8px !important;
+}
+
+.progress-bar {
+  background-color: var(--brand-primary) !important;
+  color: #fff !important;
+}
+
+.progress-bar strong {
+  color: #fff !important;
+}
+
+/* -------- Chips -------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--brand-text);
+  background: var(--super-light-g);
+  border: 1px solid var(--panel-border);
+}
+
+.chip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--mindset-green);
+}
+
+/* -------- Navbar Brand Icon -------- */
+.navbar-brand i {
+  color: var(--brand-primary) !important;
+}
+
+/* -------- Links -------- */
+a {
+  color: var(--brand-primary) !important;
+}
+
+a:hover {
+  color: var(--brand-primary-600) !important;
+}
+
+/* -------- Dropdowns -------- */
+.dropdown-menu {
+  background: var(--panel) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+.dropdown-item {
+  color: var(--brand-text) !important;
+}
+
+.dropdown-item:hover {
+  background: var(--super-light-g) !important;
+  color: var(--brand-text) !important;
+}
+
+/* -------- Modal -------- */
+.modal-content {
+  background: var(--panel) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: 12px !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--divider) !important;
+  color: var(--brand-text) !important;
+}
+
+.modal-body {
+  color: var(--brand-text) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--divider) !important;
+}
+
+/* -------- Container Background -------- */
+.container-fluid {
+  background: var(--app-bg) !important;
+}
+
+/* -------- Text Colors -------- */
+.text-muted {
+  color: var(--brand-muted) !important;
+}
+
+.text-primary {
+  color: var(--brand-primary) !important;
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .navbar-brand {
+    font-size: 18px;
+  }
+}
+
+/* -------- Dark mode adjustments for Bootstrap components -------- */
+@media (prefers-color-scheme: dark) {
+  .navbar-dark.bg-primary {
+    background-color: var(--panel) !important;
+  }
+  
+  .card.bg-primary {
+    background-color: var(--brand-primary) !important;
+  }
+  
+  .table {
+    --bs-table-bg: var(--panel);
+    --bs-table-color: var(--brand-text);
+  }
+}

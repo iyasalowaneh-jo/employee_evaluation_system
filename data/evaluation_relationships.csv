@@ -1,0 +1,1123 @@
+evaluator,evaluatee,relationship
+CEO (Rana),Technical Manager (Anas),1
+CEO (Rana),BD (Ban),1
+CEO (Rana),CFO (Haytham),1
+CEO (Rana),Unit Manager (Majd H),1
+CEO (Rana),PM Manager (Majd M),1
+CEO (Rana),Ops Manager (Ayat),1
+CEO (Rana),Field Manager (Ala'a H),1
+CEO (Rana),DP Supervisor (Tareq),1
+CEO (Rana),QA Officer (Manal),0
+CEO (Rana),DP 1 (Odeh),0
+CEO (Rana),DP 2 (Abdullah),0
+CEO (Rana),DP 3 (Iyas),0
+CEO (Rana),Ops 1 (Hala),0
+CEO (Rana),Ops 2 (Rahaf),0
+CEO (Rana),Ops 3 (Aya),0
+CEO (Rana),Ops 4 (Hamzeh),0
+CEO (Rana),PM 1 (Bana),0
+CEO (Rana),PM 2 (Feryal),0
+CEO (Rana),PM 3 (Leen),0
+CEO (Rana),Ace 1 (Ala'a Z),1
+CEO (Rana),Ace 2 (Qassas),0
+CEO (Rana),QA Senior Hamdan,0
+CEO (Rana),Accountant 1 (Dania),0
+CEO (Rana),Accountant 2 (Balqees),0
+CEO (Rana),Ops Lebanon (Ala'a Q),0
+CEO (Rana),Ops Egypt (Marwa),0
+CEO (Rana),Pm Nigeria (Funmi),1
+CEO (Rana),Ops (Ahmad Salam),x
+CEO (Rana),Ops (Abd al baqe),x
+CEO (Rana),Ops (Weklat),x
+CEO (Rana),Analysis (Valeria),1
+CEO (Rana),Analysis 1 (Marco),x
+CEO (Rana),Analysis 2 (Manuel),x
+Technical Manager (Anas),CEO (Rana),1
+Technical Manager (Anas),BD (Ban),1
+Technical Manager (Anas),CFO (Haytham),1
+Technical Manager (Anas),Unit Manager (Majd H),1
+Technical Manager (Anas),PM Manager (Majd M),1
+Technical Manager (Anas),Ops Manager (Ayat),0
+Technical Manager (Anas),Field Manager (Ala'a H),0
+Technical Manager (Anas),DP Supervisor (Tareq),1
+Technical Manager (Anas),QA Officer (Manal),0
+Technical Manager (Anas),DP 1 (Odeh),1
+Technical Manager (Anas),DP 2 (Abdullah),1
+Technical Manager (Anas),DP 3 (Iyas),0
+Technical Manager (Anas),Ops 1 (Hala),0
+Technical Manager (Anas),Ops 2 (Rahaf),0
+Technical Manager (Anas),Ops 3 (Aya),0
+Technical Manager (Anas),Ops 4 (Hamzeh),0
+Technical Manager (Anas),PM 1 (Bana),1
+Technical Manager (Anas),PM 2 (Feryal),0
+Technical Manager (Anas),PM 3 (Leen),0
+Technical Manager (Anas),Ace 1 (Ala'a Z),0
+Technical Manager (Anas),Ace 2 (Qassas),0
+Technical Manager (Anas),QA Senior Hamdan,1
+Technical Manager (Anas),Accountant 1 (Dania),0
+Technical Manager (Anas),Accountant 2 (Balqees),0
+Technical Manager (Anas),Ops Lebanon (Ala'a Q),0
+Technical Manager (Anas),Ops Egypt (Marwa),0
+Technical Manager (Anas),Pm Nigeria (Funmi),1
+Technical Manager (Anas),Ops (Ahmad Salam),1
+Technical Manager (Anas),Ops (Abd al baqe),1
+Technical Manager (Anas),Ops (Weklat),1
+Technical Manager (Anas),Analysis (Valeria),1
+Technical Manager (Anas),Analysis 1 (Marco),1
+Technical Manager (Anas),Analysis 2 (Manuel),1
+BD (Ban),CEO (Rana),1
+BD (Ban),Technical Manager (Anas),1
+BD (Ban),CFO (Haytham),1
+BD (Ban),Unit Manager (Majd H),1
+BD (Ban),PM Manager (Majd M),1
+BD (Ban),Ops Manager (Ayat),1
+BD (Ban),Field Manager (Ala'a H),0
+BD (Ban),DP Supervisor (Tareq),1
+BD (Ban),QA Officer (Manal),0
+BD (Ban),DP 1 (Odeh),0
+BD (Ban),DP 2 (Abdullah),0
+BD (Ban),DP 3 (Iyas),0
+BD (Ban),Ops 1 (Hala),0
+BD (Ban),Ops 2 (Rahaf),0
+BD (Ban),Ops 3 (Aya),0
+BD (Ban),Ops 4 (Hamzeh),0
+BD (Ban),PM 1 (Bana),0
+BD (Ban),PM 2 (Feryal),0
+BD (Ban),PM 3 (Leen),0
+BD (Ban),Ace 1 (Ala'a Z),0
+BD (Ban),Ace 2 (Qassas),0
+BD (Ban),QA Senior Hamdan,0
+BD (Ban),Accountant 1 (Dania),0
+BD (Ban),Accountant 2 (Balqees),0
+BD (Ban),Ops Lebanon (Ala'a Q),0
+BD (Ban),Ops Egypt (Marwa),0
+BD (Ban),Pm Nigeria (Funmi),0
+BD (Ban),Ops (Ahmad Salam),0
+BD (Ban),Ops (Abd al baqe),0
+BD (Ban),Ops (Weklat),0
+BD (Ban),Analysis (Valeria),x
+BD (Ban),Analysis 1 (Marco),x
+BD (Ban),Analysis 2 (Manuel),x
+CFO (Haytham),CEO (Rana),1
+CFO (Haytham),Technical Manager (Anas),1
+CFO (Haytham),BD (Ban),1
+CFO (Haytham),Unit Manager (Majd H),1
+CFO (Haytham),PM Manager (Majd M),1
+CFO (Haytham),Ops Manager (Ayat),0
+CFO (Haytham),Field Manager (Ala'a H),1
+CFO (Haytham),DP Supervisor (Tareq),1
+CFO (Haytham),QA Officer (Manal),0
+CFO (Haytham),DP 1 (Odeh),0
+CFO (Haytham),DP 2 (Abdullah),0
+CFO (Haytham),DP 3 (Iyas),0
+CFO (Haytham),Ops 1 (Hala),0
+CFO (Haytham),Ops 2 (Rahaf),0
+CFO (Haytham),Ops 3 (Aya),0
+CFO (Haytham),Ops 4 (Hamzeh),0
+CFO (Haytham),PM 1 (Bana),1
+CFO (Haytham),PM 2 (Feryal),1
+CFO (Haytham),PM 3 (Leen),1
+CFO (Haytham),Ace 1 (Ala'a Z),1
+CFO (Haytham),Ace 2 (Qassas),1
+CFO (Haytham),QA Senior Hamdan,0
+CFO (Haytham),Accountant 1 (Dania),1
+CFO (Haytham),Accountant 2 (Balqees),1
+CFO (Haytham),Ops Lebanon (Ala'a Q),0
+CFO (Haytham),Ops Egypt (Marwa),0
+CFO (Haytham),Pm Nigeria (Funmi),1
+CFO (Haytham),Ops (Ahmad Salam),1
+CFO (Haytham),Ops (Abd al baqe),1
+CFO (Haytham),Ops (Weklat),1
+CFO (Haytham),Analysis (Valeria),x
+CFO (Haytham),Analysis 1 (Marco),x
+CFO (Haytham),Analysis 2 (Manuel),x
+Unit Manager (Majd H),CEO (Rana),1
+Unit Manager (Majd H),Technical Manager (Anas),1
+Unit Manager (Majd H),BD (Ban),1
+Unit Manager (Majd H),CFO (Haytham),1
+Unit Manager (Majd H),PM Manager (Majd M),1
+Unit Manager (Majd H),Ops Manager (Ayat),1
+Unit Manager (Majd H),Field Manager (Ala'a H),1
+Unit Manager (Majd H),DP Supervisor (Tareq),1
+Unit Manager (Majd H),QA Officer (Manal),1
+Unit Manager (Majd H),DP 1 (Odeh),1
+Unit Manager (Majd H),DP 2 (Abdullah),1
+Unit Manager (Majd H),DP 3 (Iyas),1
+Unit Manager (Majd H),Ops 1 (Hala),1
+Unit Manager (Majd H),Ops 2 (Rahaf),1
+Unit Manager (Majd H),Ops 3 (Aya),1
+Unit Manager (Majd H),Ops 4 (Hamzeh),1
+Unit Manager (Majd H),PM 1 (Bana),1
+Unit Manager (Majd H),PM 2 (Feryal),1
+Unit Manager (Majd H),PM 3 (Leen),1
+Unit Manager (Majd H),Ace 1 (Ala'a Z),0
+Unit Manager (Majd H),Ace 2 (Qassas),0
+Unit Manager (Majd H),QA Senior Hamdan,1
+Unit Manager (Majd H),Accountant 1 (Dania),0
+Unit Manager (Majd H),Accountant 2 (Balqees),0
+Unit Manager (Majd H),Ops Lebanon (Ala'a Q),1
+Unit Manager (Majd H),Ops Egypt (Marwa),0
+Unit Manager (Majd H),Pm Nigeria (Funmi),0
+Unit Manager (Majd H),Ops (Ahmad Salam),0
+Unit Manager (Majd H),Ops (Abd al baqe),0
+Unit Manager (Majd H),Ops (Weklat),0
+Unit Manager (Majd H),Analysis (Valeria),x
+Unit Manager (Majd H),Analysis 1 (Marco),x
+Unit Manager (Majd H),Analysis 2 (Manuel),x
+PM Manager (Majd M),CEO (Rana),1
+PM Manager (Majd M),Technical Manager (Anas),1
+PM Manager (Majd M),BD (Ban),1
+PM Manager (Majd M),CFO (Haytham),1
+PM Manager (Majd M),Unit Manager (Majd H),1
+PM Manager (Majd M),Ops Manager (Ayat),1
+PM Manager (Majd M),Field Manager (Ala'a H),1
+PM Manager (Majd M),DP Supervisor (Tareq),1
+PM Manager (Majd M),QA Officer (Manal),0
+PM Manager (Majd M),DP 1 (Odeh),1
+PM Manager (Majd M),DP 2 (Abdullah),1
+PM Manager (Majd M),DP 3 (Iyas),1
+PM Manager (Majd M),Ops 1 (Hala),1
+PM Manager (Majd M),Ops 2 (Rahaf),1
+PM Manager (Majd M),Ops 3 (Aya),1
+PM Manager (Majd M),Ops 4 (Hamzeh),1
+PM Manager (Majd M),PM 1 (Bana),1
+PM Manager (Majd M),PM 2 (Feryal),1
+PM Manager (Majd M),PM 3 (Leen),1
+PM Manager (Majd M),Ace 1 (Ala'a Z),0
+PM Manager (Majd M),Ace 2 (Qassas),0
+PM Manager (Majd M),QA Senior Hamdan,0
+PM Manager (Majd M),Accountant 1 (Dania),0
+PM Manager (Majd M),Accountant 2 (Balqees),0
+PM Manager (Majd M),Ops Lebanon (Ala'a Q),0
+PM Manager (Majd M),Ops Egypt (Marwa),0
+PM Manager (Majd M),Pm Nigeria (Funmi),1
+PM Manager (Majd M),Ops (Ahmad Salam),0
+PM Manager (Majd M),Ops (Abd al baqe),0
+PM Manager (Majd M),Ops (Weklat),0
+PM Manager (Majd M),Analysis (Valeria),1
+PM Manager (Majd M),Analysis 1 (Marco),1
+PM Manager (Majd M),Analysis 2 (Manuel),1
+Ops Manager (Ayat),CEO (Rana),1
+Ops Manager (Ayat),Technical Manager (Anas),0
+Ops Manager (Ayat),BD (Ban),1
+Ops Manager (Ayat),CFO (Haytham),0
+Ops Manager (Ayat),Unit Manager (Majd H),1
+Ops Manager (Ayat),PM Manager (Majd M),1
+Ops Manager (Ayat),Field Manager (Ala'a H),1
+Ops Manager (Ayat),DP Supervisor (Tareq),1
+Ops Manager (Ayat),QA Officer (Manal),1
+Ops Manager (Ayat),DP 1 (Odeh),1
+Ops Manager (Ayat),DP 2 (Abdullah),1
+Ops Manager (Ayat),DP 3 (Iyas),1
+Ops Manager (Ayat),Ops 1 (Hala),1
+Ops Manager (Ayat),Ops 2 (Rahaf),1
+Ops Manager (Ayat),Ops 3 (Aya),1
+Ops Manager (Ayat),Ops 4 (Hamzeh),1
+Ops Manager (Ayat),PM 1 (Bana),1
+Ops Manager (Ayat),PM 2 (Feryal),1
+Ops Manager (Ayat),PM 3 (Leen),1
+Ops Manager (Ayat),Ace 1 (Ala'a Z),0
+Ops Manager (Ayat),Ace 2 (Qassas),1
+Ops Manager (Ayat),QA Senior Hamdan,0
+Ops Manager (Ayat),Accountant 1 (Dania),0
+Ops Manager (Ayat),Accountant 2 (Balqees),0
+Ops Manager (Ayat),Ops Lebanon (Ala'a Q),1
+Ops Manager (Ayat),Ops Egypt (Marwa),1
+Ops Manager (Ayat),Pm Nigeria (Funmi),x
+Ops Manager (Ayat),Ops (Ahmad Salam),x
+Ops Manager (Ayat),Ops (Abd al baqe),x
+Ops Manager (Ayat),Ops (Weklat),x
+Ops Manager (Ayat),Analysis (Valeria),x
+Ops Manager (Ayat),Analysis 1 (Marco),x
+Ops Manager (Ayat),Analysis 2 (Manuel),x
+Field Manager (Ala'a H),CEO (Rana),1
+Field Manager (Ala'a H),Technical Manager (Anas),0
+Field Manager (Ala'a H),BD (Ban),0
+Field Manager (Ala'a H),CFO (Haytham),1
+Field Manager (Ala'a H),Unit Manager (Majd H),1
+Field Manager (Ala'a H),PM Manager (Majd M),1
+Field Manager (Ala'a H),Ops Manager (Ayat),1
+Field Manager (Ala'a H),DP Supervisor (Tareq),1
+Field Manager (Ala'a H),QA Officer (Manal),1
+Field Manager (Ala'a H),DP 1 (Odeh),1
+Field Manager (Ala'a H),DP 2 (Abdullah),1
+Field Manager (Ala'a H),DP 3 (Iyas),1
+Field Manager (Ala'a H),Ops 1 (Hala),1
+Field Manager (Ala'a H),Ops 2 (Rahaf),1
+Field Manager (Ala'a H),Ops 3 (Aya),1
+Field Manager (Ala'a H),Ops 4 (Hamzeh),1
+Field Manager (Ala'a H),PM 1 (Bana),1
+Field Manager (Ala'a H),PM 2 (Feryal),1
+Field Manager (Ala'a H),PM 3 (Leen),1
+Field Manager (Ala'a H),Ace 1 (Ala'a Z),0
+Field Manager (Ala'a H),Ace 2 (Qassas),1
+Field Manager (Ala'a H),QA Senior Hamdan,1
+Field Manager (Ala'a H),Accountant 1 (Dania),0
+Field Manager (Ala'a H),Accountant 2 (Balqees),0
+Field Manager (Ala'a H),Ops Lebanon (Ala'a Q),1
+Field Manager (Ala'a H),Ops Egypt (Marwa),1
+Field Manager (Ala'a H),Pm Nigeria (Funmi),x
+Field Manager (Ala'a H),Ops (Ahmad Salam),x
+Field Manager (Ala'a H),Ops (Abd al baqe),x
+Field Manager (Ala'a H),Ops (Weklat),x
+Field Manager (Ala'a H),Analysis (Valeria),x
+Field Manager (Ala'a H),Analysis 1 (Marco),x
+Field Manager (Ala'a H),Analysis 2 (Manuel),x
+DP Supervisor (Tareq),CEO (Rana),1
+DP Supervisor (Tareq),Technical Manager (Anas),1
+DP Supervisor (Tareq),BD (Ban),1
+DP Supervisor (Tareq),CFO (Haytham),1
+DP Supervisor (Tareq),Unit Manager (Majd H),1
+DP Supervisor (Tareq),PM Manager (Majd M),1
+DP Supervisor (Tareq),Ops Manager (Ayat),1
+DP Supervisor (Tareq),Field Manager (Ala'a H),1
+DP Supervisor (Tareq),QA Officer (Manal),1
+DP Supervisor (Tareq),DP 1 (Odeh),1
+DP Supervisor (Tareq),DP 2 (Abdullah),1
+DP Supervisor (Tareq),DP 3 (Iyas),1
+DP Supervisor (Tareq),Ops 1 (Hala),1
+DP Supervisor (Tareq),Ops 2 (Rahaf),1
+DP Supervisor (Tareq),Ops 3 (Aya),1
+DP Supervisor (Tareq),Ops 4 (Hamzeh),1
+DP Supervisor (Tareq),PM 1 (Bana),1
+DP Supervisor (Tareq),PM 2 (Feryal),1
+DP Supervisor (Tareq),PM 3 (Leen),1
+DP Supervisor (Tareq),Ace 1 (Ala'a Z),0
+DP Supervisor (Tareq),Ace 2 (Qassas),1
+DP Supervisor (Tareq),QA Senior Hamdan,1
+DP Supervisor (Tareq),Accountant 1 (Dania),1
+DP Supervisor (Tareq),Accountant 2 (Balqees),0
+DP Supervisor (Tareq),Ops Lebanon (Ala'a Q),0
+DP Supervisor (Tareq),Ops Egypt (Marwa),0
+DP Supervisor (Tareq),Pm Nigeria (Funmi),1
+DP Supervisor (Tareq),Ops (Ahmad Salam),1
+DP Supervisor (Tareq),Ops (Abd al baqe),1
+DP Supervisor (Tareq),Ops (Weklat),1
+DP Supervisor (Tareq),Analysis (Valeria),1
+DP Supervisor (Tareq),Analysis 1 (Marco),1
+DP Supervisor (Tareq),Analysis 2 (Manuel),1
+QA Officer (Manal),CEO (Rana),0
+QA Officer (Manal),Technical Manager (Anas),0
+QA Officer (Manal),BD (Ban),0
+QA Officer (Manal),CFO (Haytham),0
+QA Officer (Manal),Unit Manager (Majd H),1
+QA Officer (Manal),PM Manager (Majd M),0
+QA Officer (Manal),Ops Manager (Ayat),1
+QA Officer (Manal),Field Manager (Ala'a H),1
+QA Officer (Manal),DP Supervisor (Tareq),1
+QA Officer (Manal),DP 1 (Odeh),1
+QA Officer (Manal),DP 2 (Abdullah),1
+QA Officer (Manal),DP 3 (Iyas),1
+QA Officer (Manal),Ops 1 (Hala),1
+QA Officer (Manal),Ops 2 (Rahaf),1
+QA Officer (Manal),Ops 3 (Aya),1
+QA Officer (Manal),Ops 4 (Hamzeh),1
+QA Officer (Manal),PM 1 (Bana),1
+QA Officer (Manal),PM 2 (Feryal),1
+QA Officer (Manal),PM 3 (Leen),1
+QA Officer (Manal),Ace 1 (Ala'a Z),0
+QA Officer (Manal),Ace 2 (Qassas),1
+QA Officer (Manal),QA Senior Hamdan,1
+QA Officer (Manal),Accountant 1 (Dania),0
+QA Officer (Manal),Accountant 2 (Balqees),0
+QA Officer (Manal),Ops Lebanon (Ala'a Q),x
+QA Officer (Manal),Ops Egypt (Marwa),x
+QA Officer (Manal),Pm Nigeria (Funmi),x
+QA Officer (Manal),Ops (Ahmad Salam),x
+QA Officer (Manal),Ops (Abd al baqe),x
+QA Officer (Manal),Ops (Weklat),x
+QA Officer (Manal),Analysis (Valeria),x
+QA Officer (Manal),Analysis 1 (Marco),x
+QA Officer (Manal),Analysis 2 (Manuel),x
+DP 1 (Odeh),CEO (Rana),0
+DP 1 (Odeh),Technical Manager (Anas),1
+DP 1 (Odeh),BD (Ban),0
+DP 1 (Odeh),CFO (Haytham),0
+DP 1 (Odeh),Unit Manager (Majd H),1
+DP 1 (Odeh),PM Manager (Majd M),1
+DP 1 (Odeh),Ops Manager (Ayat),1
+DP 1 (Odeh),Field Manager (Ala'a H),1
+DP 1 (Odeh),DP Supervisor (Tareq),1
+DP 1 (Odeh),QA Officer (Manal),1
+DP 1 (Odeh),DP 2 (Abdullah),1
+DP 1 (Odeh),DP 3 (Iyas),1
+DP 1 (Odeh),Ops 1 (Hala),1
+DP 1 (Odeh),Ops 2 (Rahaf),1
+DP 1 (Odeh),Ops 3 (Aya),1
+DP 1 (Odeh),Ops 4 (Hamzeh),1
+DP 1 (Odeh),PM 1 (Bana),1
+DP 1 (Odeh),PM 2 (Feryal),1
+DP 1 (Odeh),PM 3 (Leen),1
+DP 1 (Odeh),Ace 1 (Ala'a Z),0
+DP 1 (Odeh),Ace 2 (Qassas),1
+DP 1 (Odeh),QA Senior Hamdan,1
+DP 1 (Odeh),Accountant 1 (Dania),0
+DP 1 (Odeh),Accountant 2 (Balqees),0
+DP 1 (Odeh),Ops Lebanon (Ala'a Q),1
+DP 1 (Odeh),Ops Egypt (Marwa),1
+DP 1 (Odeh),Pm Nigeria (Funmi),x
+DP 1 (Odeh),Ops (Ahmad Salam),x
+DP 1 (Odeh),Ops (Abd al baqe),x
+DP 1 (Odeh),Ops (Weklat),x
+DP 1 (Odeh),Analysis (Valeria),1
+DP 1 (Odeh),Analysis 1 (Marco),1
+DP 1 (Odeh),Analysis 2 (Manuel),x
+DP 2 (Abdullah),CEO (Rana),0
+DP 2 (Abdullah),Technical Manager (Anas),1
+DP 2 (Abdullah),BD (Ban),0
+DP 2 (Abdullah),CFO (Haytham),0
+DP 2 (Abdullah),Unit Manager (Majd H),1
+DP 2 (Abdullah),PM Manager (Majd M),1
+DP 2 (Abdullah),Ops Manager (Ayat),1
+DP 2 (Abdullah),Field Manager (Ala'a H),1
+DP 2 (Abdullah),DP Supervisor (Tareq),1
+DP 2 (Abdullah),QA Officer (Manal),1
+DP 2 (Abdullah),DP 1 (Odeh),1
+DP 2 (Abdullah),DP 3 (Iyas),1
+DP 2 (Abdullah),Ops 1 (Hala),1
+DP 2 (Abdullah),Ops 2 (Rahaf),1
+DP 2 (Abdullah),Ops 3 (Aya),1
+DP 2 (Abdullah),Ops 4 (Hamzeh),1
+DP 2 (Abdullah),PM 1 (Bana),1
+DP 2 (Abdullah),PM 2 (Feryal),1
+DP 2 (Abdullah),PM 3 (Leen),0
+DP 2 (Abdullah),Ace 1 (Ala'a Z),0
+DP 2 (Abdullah),Ace 2 (Qassas),1
+DP 2 (Abdullah),QA Senior Hamdan,1
+DP 2 (Abdullah),Accountant 1 (Dania),0
+DP 2 (Abdullah),Accountant 2 (Balqees),0
+DP 2 (Abdullah),Ops Lebanon (Ala'a Q),0
+DP 2 (Abdullah),Ops Egypt (Marwa),0
+DP 2 (Abdullah),Pm Nigeria (Funmi),1
+DP 2 (Abdullah),Ops (Ahmad Salam),1
+DP 2 (Abdullah),Ops (Abd al baqe),1
+DP 2 (Abdullah),Ops (Weklat),1
+DP 2 (Abdullah),Analysis (Valeria),1
+DP 2 (Abdullah),Analysis 1 (Marco),1
+DP 2 (Abdullah),Analysis 2 (Manuel),0
+DP 3 (Iyas),CEO (Rana),0
+DP 3 (Iyas),Technical Manager (Anas),0
+DP 3 (Iyas),BD (Ban),0
+DP 3 (Iyas),CFO (Haytham),0
+DP 3 (Iyas),Unit Manager (Majd H),1
+DP 3 (Iyas),PM Manager (Majd M),1
+DP 3 (Iyas),Ops Manager (Ayat),1
+DP 3 (Iyas),Field Manager (Ala'a H),1
+DP 3 (Iyas),DP Supervisor (Tareq),1
+DP 3 (Iyas),QA Officer (Manal),1
+DP 3 (Iyas),DP 1 (Odeh),1
+DP 3 (Iyas),DP 2 (Abdullah),1
+DP 3 (Iyas),Ops 1 (Hala),1
+DP 3 (Iyas),Ops 2 (Rahaf),1
+DP 3 (Iyas),Ops 3 (Aya),1
+DP 3 (Iyas),Ops 4 (Hamzeh),1
+DP 3 (Iyas),PM 1 (Bana),1
+DP 3 (Iyas),PM 2 (Feryal),1
+DP 3 (Iyas),PM 3 (Leen),0
+DP 3 (Iyas),Ace 1 (Ala'a Z),0
+DP 3 (Iyas),Ace 2 (Qassas),1
+DP 3 (Iyas),QA Senior Hamdan,1
+DP 3 (Iyas),Accountant 1 (Dania),0
+DP 3 (Iyas),Accountant 2 (Balqees),0
+DP 3 (Iyas),Ops Lebanon (Ala'a Q),1
+DP 3 (Iyas),Ops Egypt (Marwa),0
+DP 3 (Iyas),Pm Nigeria (Funmi),x
+DP 3 (Iyas),Ops (Ahmad Salam),x
+DP 3 (Iyas),Ops (Abd al baqe),x
+DP 3 (Iyas),Ops (Weklat),x
+DP 3 (Iyas),Analysis (Valeria),x
+DP 3 (Iyas),Analysis 1 (Marco),1
+DP 3 (Iyas),Analysis 2 (Manuel),1
+Ops 1 (Hala),CEO (Rana),0
+Ops 1 (Hala),Technical Manager (Anas),0
+Ops 1 (Hala),BD (Ban),0
+Ops 1 (Hala),CFO (Haytham),0
+Ops 1 (Hala),Unit Manager (Majd H),1
+Ops 1 (Hala),PM Manager (Majd M),1
+Ops 1 (Hala),Ops Manager (Ayat),1
+Ops 1 (Hala),Field Manager (Ala'a H),1
+Ops 1 (Hala),DP Supervisor (Tareq),1
+Ops 1 (Hala),QA Officer (Manal),1
+Ops 1 (Hala),DP 1 (Odeh),1
+Ops 1 (Hala),DP 2 (Abdullah),1
+Ops 1 (Hala),DP 3 (Iyas),1
+Ops 1 (Hala),Ops 2 (Rahaf),1
+Ops 1 (Hala),Ops 3 (Aya),1
+Ops 1 (Hala),Ops 4 (Hamzeh),1
+Ops 1 (Hala),PM 1 (Bana),1
+Ops 1 (Hala),PM 2 (Feryal),1
+Ops 1 (Hala),PM 3 (Leen),1
+Ops 1 (Hala),Ace 1 (Ala'a Z),1
+Ops 1 (Hala),Ace 2 (Qassas),1
+Ops 1 (Hala),QA Senior Hamdan,1
+Ops 1 (Hala),Accountant 1 (Dania),0
+Ops 1 (Hala),Accountant 2 (Balqees),0
+Ops 1 (Hala),Ops Lebanon (Ala'a Q),x
+Ops 1 (Hala),Ops Egypt (Marwa),x
+Ops 1 (Hala),Pm Nigeria (Funmi),x
+Ops 1 (Hala),Ops (Ahmad Salam),x
+Ops 1 (Hala),Ops (Abd al baqe),x
+Ops 1 (Hala),Ops (Weklat),x
+Ops 1 (Hala),Analysis (Valeria),x
+Ops 1 (Hala),Analysis 1 (Marco),x
+Ops 1 (Hala),Analysis 2 (Manuel),x
+Ops 2 (Rahaf),CEO (Rana),0
+Ops 2 (Rahaf),Technical Manager (Anas),0
+Ops 2 (Rahaf),BD (Ban),0
+Ops 2 (Rahaf),CFO (Haytham),0
+Ops 2 (Rahaf),Unit Manager (Majd H),1
+Ops 2 (Rahaf),PM Manager (Majd M),1
+Ops 2 (Rahaf),Ops Manager (Ayat),1
+Ops 2 (Rahaf),Field Manager (Ala'a H),1
+Ops 2 (Rahaf),DP Supervisor (Tareq),1
+Ops 2 (Rahaf),QA Officer (Manal),1
+Ops 2 (Rahaf),DP 1 (Odeh),1
+Ops 2 (Rahaf),DP 2 (Abdullah),1
+Ops 2 (Rahaf),DP 3 (Iyas),1
+Ops 2 (Rahaf),Ops 1 (Hala),1
+Ops 2 (Rahaf),Ops 3 (Aya),1
+Ops 2 (Rahaf),Ops 4 (Hamzeh),1
+Ops 2 (Rahaf),PM 1 (Bana),1
+Ops 2 (Rahaf),PM 2 (Feryal),1
+Ops 2 (Rahaf),PM 3 (Leen),1
+Ops 2 (Rahaf),Ace 1 (Ala'a Z),1
+Ops 2 (Rahaf),Ace 2 (Qassas),1
+Ops 2 (Rahaf),QA Senior Hamdan,1
+Ops 2 (Rahaf),Accountant 1 (Dania),0
+Ops 2 (Rahaf),Accountant 2 (Balqees),0
+Ops 2 (Rahaf),Ops Lebanon (Ala'a Q),x
+Ops 2 (Rahaf),Ops Egypt (Marwa),x
+Ops 2 (Rahaf),Pm Nigeria (Funmi),x
+Ops 2 (Rahaf),Ops (Ahmad Salam),x
+Ops 2 (Rahaf),Ops (Abd al baqe),x
+Ops 2 (Rahaf),Ops (Weklat),x
+Ops 2 (Rahaf),Analysis (Valeria),x
+Ops 2 (Rahaf),Analysis 1 (Marco),x
+Ops 2 (Rahaf),Analysis 2 (Manuel),x
+Ops 3 (Aya),CEO (Rana),0
+Ops 3 (Aya),Technical Manager (Anas),0
+Ops 3 (Aya),BD (Ban),0
+Ops 3 (Aya),CFO (Haytham),0
+Ops 3 (Aya),Unit Manager (Majd H),1
+Ops 3 (Aya),PM Manager (Majd M),1
+Ops 3 (Aya),Ops Manager (Ayat),1
+Ops 3 (Aya),Field Manager (Ala'a H),1
+Ops 3 (Aya),DP Supervisor (Tareq),1
+Ops 3 (Aya),QA Officer (Manal),1
+Ops 3 (Aya),DP 1 (Odeh),1
+Ops 3 (Aya),DP 2 (Abdullah),1
+Ops 3 (Aya),DP 3 (Iyas),1
+Ops 3 (Aya),Ops 1 (Hala),1
+Ops 3 (Aya),Ops 2 (Rahaf),1
+Ops 3 (Aya),Ops 4 (Hamzeh),1
+Ops 3 (Aya),PM 1 (Bana),1
+Ops 3 (Aya),PM 2 (Feryal),1
+Ops 3 (Aya),PM 3 (Leen),1
+Ops 3 (Aya),Ace 1 (Ala'a Z),1
+Ops 3 (Aya),Ace 2 (Qassas),1
+Ops 3 (Aya),QA Senior Hamdan,1
+Ops 3 (Aya),Accountant 1 (Dania),0
+Ops 3 (Aya),Accountant 2 (Balqees),0
+Ops 3 (Aya),Ops Lebanon (Ala'a Q),x
+Ops 3 (Aya),Ops Egypt (Marwa),x
+Ops 3 (Aya),Pm Nigeria (Funmi),x
+Ops 3 (Aya),Ops (Ahmad Salam),x
+Ops 3 (Aya),Ops (Abd al baqe),x
+Ops 3 (Aya),Ops (Weklat),x
+Ops 3 (Aya),Analysis (Valeria),x
+Ops 3 (Aya),Analysis 1 (Marco),x
+Ops 3 (Aya),Analysis 2 (Manuel),x
+Ops 4 (Hamzeh),CEO (Rana),0
+Ops 4 (Hamzeh),Technical Manager (Anas),0
+Ops 4 (Hamzeh),BD (Ban),0
+Ops 4 (Hamzeh),CFO (Haytham),0
+Ops 4 (Hamzeh),Unit Manager (Majd H),1
+Ops 4 (Hamzeh),PM Manager (Majd M),1
+Ops 4 (Hamzeh),Ops Manager (Ayat),1
+Ops 4 (Hamzeh),Field Manager (Ala'a H),1
+Ops 4 (Hamzeh),DP Supervisor (Tareq),1
+Ops 4 (Hamzeh),QA Officer (Manal),1
+Ops 4 (Hamzeh),DP 1 (Odeh),1
+Ops 4 (Hamzeh),DP 2 (Abdullah),1
+Ops 4 (Hamzeh),DP 3 (Iyas),1
+Ops 4 (Hamzeh),Ops 1 (Hala),1
+Ops 4 (Hamzeh),Ops 2 (Rahaf),1
+Ops 4 (Hamzeh),Ops 3 (Aya),1
+Ops 4 (Hamzeh),PM 1 (Bana),1
+Ops 4 (Hamzeh),PM 2 (Feryal),1
+Ops 4 (Hamzeh),PM 3 (Leen),1
+Ops 4 (Hamzeh),Ace 1 (Ala'a Z),1
+Ops 4 (Hamzeh),Ace 2 (Qassas),1
+Ops 4 (Hamzeh),QA Senior Hamdan,1
+Ops 4 (Hamzeh),Accountant 1 (Dania),0
+Ops 4 (Hamzeh),Accountant 2 (Balqees),0
+Ops 4 (Hamzeh),Ops Lebanon (Ala'a Q),x
+Ops 4 (Hamzeh),Ops Egypt (Marwa),x
+Ops 4 (Hamzeh),Pm Nigeria (Funmi),x
+Ops 4 (Hamzeh),Ops (Ahmad Salam),x
+Ops 4 (Hamzeh),Ops (Abd al baqe),x
+Ops 4 (Hamzeh),Ops (Weklat),x
+Ops 4 (Hamzeh),Analysis (Valeria),x
+Ops 4 (Hamzeh),Analysis 1 (Marco),x
+Ops 4 (Hamzeh),Analysis 2 (Manuel),x
+PM 1 (Bana),CEO (Rana),0
+PM 1 (Bana),Technical Manager (Anas),1
+PM 1 (Bana),BD (Ban),0
+PM 1 (Bana),CFO (Haytham),1
+PM 1 (Bana),Unit Manager (Majd H),1
+PM 1 (Bana),PM Manager (Majd M),1
+PM 1 (Bana),Ops Manager (Ayat),1
+PM 1 (Bana),Field Manager (Ala'a H),1
+PM 1 (Bana),DP Supervisor (Tareq),1
+PM 1 (Bana),QA Officer (Manal),1
+PM 1 (Bana),DP 1 (Odeh),1
+PM 1 (Bana),DP 2 (Abdullah),1
+PM 1 (Bana),DP 3 (Iyas),1
+PM 1 (Bana),Ops 1 (Hala),1
+PM 1 (Bana),Ops 2 (Rahaf),1
+PM 1 (Bana),Ops 3 (Aya),1
+PM 1 (Bana),Ops 4 (Hamzeh),1
+PM 1 (Bana),PM 2 (Feryal),1
+PM 1 (Bana),PM 3 (Leen),1
+PM 1 (Bana),Ace 1 (Ala'a Z),1
+PM 1 (Bana),Ace 2 (Qassas),1
+PM 1 (Bana),QA Senior Hamdan,0
+PM 1 (Bana),Accountant 1 (Dania),1
+PM 1 (Bana),Accountant 2 (Balqees),1
+PM 1 (Bana),Ops Lebanon (Ala'a Q),1
+PM 1 (Bana),Ops Egypt (Marwa),x
+PM 1 (Bana),Pm Nigeria (Funmi),x
+PM 1 (Bana),Ops (Ahmad Salam),x
+PM 1 (Bana),Ops (Abd al baqe),x
+PM 1 (Bana),Ops (Weklat),x
+PM 1 (Bana),Analysis (Valeria),1
+PM 1 (Bana),Analysis 1 (Marco),1
+PM 1 (Bana),Analysis 2 (Manuel),1
+PM 2 (Feryal),CEO (Rana),0
+PM 2 (Feryal),Technical Manager (Anas),0
+PM 2 (Feryal),BD (Ban),0
+PM 2 (Feryal),CFO (Haytham),1
+PM 2 (Feryal),Unit Manager (Majd H),1
+PM 2 (Feryal),PM Manager (Majd M),1
+PM 2 (Feryal),Ops Manager (Ayat),1
+PM 2 (Feryal),Field Manager (Ala'a H),1
+PM 2 (Feryal),DP Supervisor (Tareq),1
+PM 2 (Feryal),QA Officer (Manal),1
+PM 2 (Feryal),DP 1 (Odeh),1
+PM 2 (Feryal),DP 2 (Abdullah),1
+PM 2 (Feryal),DP 3 (Iyas),1
+PM 2 (Feryal),Ops 1 (Hala),1
+PM 2 (Feryal),Ops 2 (Rahaf),1
+PM 2 (Feryal),Ops 3 (Aya),1
+PM 2 (Feryal),Ops 4 (Hamzeh),1
+PM 2 (Feryal),PM 1 (Bana),1
+PM 2 (Feryal),PM 3 (Leen),1
+PM 2 (Feryal),Ace 1 (Ala'a Z),1
+PM 2 (Feryal),Ace 2 (Qassas),1
+PM 2 (Feryal),QA Senior Hamdan,0
+PM 2 (Feryal),Accountant 1 (Dania),1
+PM 2 (Feryal),Accountant 2 (Balqees),1
+PM 2 (Feryal),Ops Lebanon (Ala'a Q),x
+PM 2 (Feryal),Ops Egypt (Marwa),x
+PM 2 (Feryal),Pm Nigeria (Funmi),x
+PM 2 (Feryal),Ops (Ahmad Salam),x
+PM 2 (Feryal),Ops (Abd al baqe),x
+PM 2 (Feryal),Ops (Weklat),x
+PM 2 (Feryal),Analysis (Valeria),1
+PM 2 (Feryal),Analysis 1 (Marco),1
+PM 2 (Feryal),Analysis 2 (Manuel),1
+PM 3 (Leen),CEO (Rana),0
+PM 3 (Leen),Technical Manager (Anas),0
+PM 3 (Leen),BD (Ban),0
+PM 3 (Leen),CFO (Haytham),1
+PM 3 (Leen),Unit Manager (Majd H),1
+PM 3 (Leen),PM Manager (Majd M),1
+PM 3 (Leen),Ops Manager (Ayat),1
+PM 3 (Leen),Field Manager (Ala'a H),1
+PM 3 (Leen),DP Supervisor (Tareq),1
+PM 3 (Leen),QA Officer (Manal),1
+PM 3 (Leen),DP 1 (Odeh),1
+PM 3 (Leen),DP 2 (Abdullah),0
+PM 3 (Leen),DP 3 (Iyas),0
+PM 3 (Leen),Ops 1 (Hala),1
+PM 3 (Leen),Ops 2 (Rahaf),1
+PM 3 (Leen),Ops 3 (Aya),1
+PM 3 (Leen),Ops 4 (Hamzeh),1
+PM 3 (Leen),PM 1 (Bana),1
+PM 3 (Leen),PM 2 (Feryal),1
+PM 3 (Leen),Ace 1 (Ala'a Z),1
+PM 3 (Leen),Ace 2 (Qassas),1
+PM 3 (Leen),QA Senior Hamdan,0
+PM 3 (Leen),Accountant 1 (Dania),1
+PM 3 (Leen),Accountant 2 (Balqees),1
+PM 3 (Leen),Ops Lebanon (Ala'a Q),x
+PM 3 (Leen),Ops Egypt (Marwa),x
+PM 3 (Leen),Pm Nigeria (Funmi),x
+PM 3 (Leen),Ops (Ahmad Salam),x
+PM 3 (Leen),Ops (Abd al baqe),x
+PM 3 (Leen),Ops (Weklat),x
+PM 3 (Leen),Analysis (Valeria),1
+PM 3 (Leen),Analysis 1 (Marco),1
+PM 3 (Leen),Analysis 2 (Manuel),1
+Ace 1 (Ala'a Z),CEO (Rana),1
+Ace 1 (Ala'a Z),Technical Manager (Anas),0
+Ace 1 (Ala'a Z),BD (Ban),0
+Ace 1 (Ala'a Z),CFO (Haytham),1
+Ace 1 (Ala'a Z),Unit Manager (Majd H),0
+Ace 1 (Ala'a Z),PM Manager (Majd M),0
+Ace 1 (Ala'a Z),Ops Manager (Ayat),0
+Ace 1 (Ala'a Z),Field Manager (Ala'a H),0
+Ace 1 (Ala'a Z),DP Supervisor (Tareq),0
+Ace 1 (Ala'a Z),QA Officer (Manal),0
+Ace 1 (Ala'a Z),DP 1 (Odeh),0
+Ace 1 (Ala'a Z),DP 2 (Abdullah),0
+Ace 1 (Ala'a Z),DP 3 (Iyas),0
+Ace 1 (Ala'a Z),Ops 1 (Hala),1
+Ace 1 (Ala'a Z),Ops 2 (Rahaf),1
+Ace 1 (Ala'a Z),Ops 3 (Aya),1
+Ace 1 (Ala'a Z),Ops 4 (Hamzeh),1
+Ace 1 (Ala'a Z),PM 1 (Bana),1
+Ace 1 (Ala'a Z),PM 2 (Feryal),1
+Ace 1 (Ala'a Z),PM 3 (Leen),1
+Ace 1 (Ala'a Z),Ace 2 (Qassas),1
+Ace 1 (Ala'a Z),QA Senior Hamdan,1
+Ace 1 (Ala'a Z),Accountant 1 (Dania),1
+Ace 1 (Ala'a Z),Accountant 2 (Balqees),1
+Ace 1 (Ala'a Z),Ops Lebanon (Ala'a Q),0
+Ace 1 (Ala'a Z),Ops Egypt (Marwa),x
+Ace 1 (Ala'a Z),Pm Nigeria (Funmi),x
+Ace 1 (Ala'a Z),Ops (Ahmad Salam),x
+Ace 1 (Ala'a Z),Ops (Abd al baqe),x
+Ace 1 (Ala'a Z),Ops (Weklat),x
+Ace 1 (Ala'a Z),Analysis (Valeria),x
+Ace 1 (Ala'a Z),Analysis 1 (Marco),x
+Ace 1 (Ala'a Z),Analysis 2 (Manuel),x
+Ace 2 (Qassas),CEO (Rana),0
+Ace 2 (Qassas),Technical Manager (Anas),0
+Ace 2 (Qassas),BD (Ban),0
+Ace 2 (Qassas),CFO (Haytham),1
+Ace 2 (Qassas),Unit Manager (Majd H),0
+Ace 2 (Qassas),PM Manager (Majd M),0
+Ace 2 (Qassas),Ops Manager (Ayat),1
+Ace 2 (Qassas),Field Manager (Ala'a H),1
+Ace 2 (Qassas),DP Supervisor (Tareq),1
+Ace 2 (Qassas),QA Officer (Manal),1
+Ace 2 (Qassas),DP 1 (Odeh),1
+Ace 2 (Qassas),DP 2 (Abdullah),1
+Ace 2 (Qassas),DP 3 (Iyas),1
+Ace 2 (Qassas),Ops 1 (Hala),1
+Ace 2 (Qassas),Ops 2 (Rahaf),1
+Ace 2 (Qassas),Ops 3 (Aya),1
+Ace 2 (Qassas),Ops 4 (Hamzeh),1
+Ace 2 (Qassas),PM 1 (Bana),1
+Ace 2 (Qassas),PM 2 (Feryal),1
+Ace 2 (Qassas),PM 3 (Leen),1
+Ace 2 (Qassas),Ace 1 (Ala'a Z),1
+Ace 2 (Qassas),QA Senior Hamdan,1
+Ace 2 (Qassas),Accountant 1 (Dania),0
+Ace 2 (Qassas),Accountant 2 (Balqees),0
+Ace 2 (Qassas),Ops Lebanon (Ala'a Q),1
+Ace 2 (Qassas),Ops Egypt (Marwa),1
+Ace 2 (Qassas),Pm Nigeria (Funmi),x
+Ace 2 (Qassas),Ops (Ahmad Salam),x
+Ace 2 (Qassas),Ops (Abd al baqe),x
+Ace 2 (Qassas),Ops (Weklat),x
+Ace 2 (Qassas),Analysis (Valeria),x
+Ace 2 (Qassas),Analysis 1 (Marco),x
+Ace 2 (Qassas),Analysis 2 (Manuel),x
+QA Senior Hamdan,CEO (Rana),0
+QA Senior Hamdan,Technical Manager (Anas),1
+QA Senior Hamdan,BD (Ban),0
+QA Senior Hamdan,CFO (Haytham),0
+QA Senior Hamdan,Unit Manager (Majd H),1
+QA Senior Hamdan,PM Manager (Majd M),0
+QA Senior Hamdan,Ops Manager (Ayat),0
+QA Senior Hamdan,Field Manager (Ala'a H),1
+QA Senior Hamdan,DP Supervisor (Tareq),1
+QA Senior Hamdan,QA Officer (Manal),1
+QA Senior Hamdan,DP 1 (Odeh),1
+QA Senior Hamdan,DP 2 (Abdullah),1
+QA Senior Hamdan,DP 3 (Iyas),1
+QA Senior Hamdan,Ops 1 (Hala),1
+QA Senior Hamdan,Ops 2 (Rahaf),1
+QA Senior Hamdan,Ops 3 (Aya),1
+QA Senior Hamdan,Ops 4 (Hamzeh),1
+QA Senior Hamdan,PM 1 (Bana),0
+QA Senior Hamdan,PM 2 (Feryal),0
+QA Senior Hamdan,PM 3 (Leen),0
+QA Senior Hamdan,Ace 1 (Ala'a Z),1
+QA Senior Hamdan,Ace 2 (Qassas),1
+QA Senior Hamdan,Accountant 1 (Dania),1
+QA Senior Hamdan,Accountant 2 (Balqees),1
+QA Senior Hamdan,Ops Lebanon (Ala'a Q),x
+QA Senior Hamdan,Ops Egypt (Marwa),x
+QA Senior Hamdan,Pm Nigeria (Funmi),1
+QA Senior Hamdan,Ops (Ahmad Salam),1
+QA Senior Hamdan,Ops (Abd al baqe),1
+QA Senior Hamdan,Ops (Weklat),1
+QA Senior Hamdan,Analysis (Valeria),1
+QA Senior Hamdan,Analysis 1 (Marco),1
+QA Senior Hamdan,Analysis 2 (Manuel),1
+Accountant 1 (Dania),CEO (Rana),0
+Accountant 1 (Dania),Technical Manager (Anas),0
+Accountant 1 (Dania),BD (Ban),0
+Accountant 1 (Dania),CFO (Haytham),1
+Accountant 1 (Dania),Unit Manager (Majd H),0
+Accountant 1 (Dania),PM Manager (Majd M),0
+Accountant 1 (Dania),Ops Manager (Ayat),0
+Accountant 1 (Dania),Field Manager (Ala'a H),0
+Accountant 1 (Dania),DP Supervisor (Tareq),1
+Accountant 1 (Dania),QA Officer (Manal),0
+Accountant 1 (Dania),DP 1 (Odeh),0
+Accountant 1 (Dania),DP 2 (Abdullah),0
+Accountant 1 (Dania),DP 3 (Iyas),0
+Accountant 1 (Dania),Ops 1 (Hala),0
+Accountant 1 (Dania),Ops 2 (Rahaf),0
+Accountant 1 (Dania),Ops 3 (Aya),0
+Accountant 1 (Dania),Ops 4 (Hamzeh),0
+Accountant 1 (Dania),PM 1 (Bana),1
+Accountant 1 (Dania),PM 2 (Feryal),1
+Accountant 1 (Dania),PM 3 (Leen),1
+Accountant 1 (Dania),Ace 1 (Ala'a Z),1
+Accountant 1 (Dania),Ace 2 (Qassas),0
+Accountant 1 (Dania),QA Senior Hamdan,1
+Accountant 1 (Dania),Accountant 2 (Balqees),1
+Accountant 1 (Dania),Ops Lebanon (Ala'a Q),x
+Accountant 1 (Dania),Ops Egypt (Marwa),x
+Accountant 1 (Dania),Pm Nigeria (Funmi),x
+Accountant 1 (Dania),Ops (Ahmad Salam),x
+Accountant 1 (Dania),Ops (Abd al baqe),x
+Accountant 1 (Dania),Ops (Weklat),x
+Accountant 1 (Dania),Analysis (Valeria),x
+Accountant 1 (Dania),Analysis 1 (Marco),x
+Accountant 1 (Dania),Analysis 2 (Manuel),x
+Accountant 2 (Balqees),CEO (Rana),0
+Accountant 2 (Balqees),Technical Manager (Anas),0
+Accountant 2 (Balqees),BD (Ban),0
+Accountant 2 (Balqees),CFO (Haytham),1
+Accountant 2 (Balqees),Unit Manager (Majd H),0
+Accountant 2 (Balqees),PM Manager (Majd M),0
+Accountant 2 (Balqees),Ops Manager (Ayat),0
+Accountant 2 (Balqees),Field Manager (Ala'a H),0
+Accountant 2 (Balqees),DP Supervisor (Tareq),0
+Accountant 2 (Balqees),QA Officer (Manal),0
+Accountant 2 (Balqees),DP 1 (Odeh),0
+Accountant 2 (Balqees),DP 2 (Abdullah),0
+Accountant 2 (Balqees),DP 3 (Iyas),0
+Accountant 2 (Balqees),Ops 1 (Hala),0
+Accountant 2 (Balqees),Ops 2 (Rahaf),0
+Accountant 2 (Balqees),Ops 3 (Aya),0
+Accountant 2 (Balqees),Ops 4 (Hamzeh),0
+Accountant 2 (Balqees),PM 1 (Bana),1
+Accountant 2 (Balqees),PM 2 (Feryal),1
+Accountant 2 (Balqees),PM 3 (Leen),1
+Accountant 2 (Balqees),Ace 1 (Ala'a Z),1
+Accountant 2 (Balqees),Ace 2 (Qassas),0
+Accountant 2 (Balqees),QA Senior Hamdan,1
+Accountant 2 (Balqees),Accountant 1 (Dania),1
+Accountant 2 (Balqees),Ops Lebanon (Ala'a Q),x
+Accountant 2 (Balqees),Ops Egypt (Marwa),x
+Accountant 2 (Balqees),Pm Nigeria (Funmi),x
+Accountant 2 (Balqees),Ops (Ahmad Salam),x
+Accountant 2 (Balqees),Ops (Abd al baqe),x
+Accountant 2 (Balqees),Ops (Weklat),x
+Accountant 2 (Balqees),Analysis (Valeria),x
+Accountant 2 (Balqees),Analysis 1 (Marco),x
+Accountant 2 (Balqees),Analysis 2 (Manuel),x
+Ops Lebanon (Ala'a Q),CEO (Rana),0
+Ops Lebanon (Ala'a Q),Technical Manager (Anas),0
+Ops Lebanon (Ala'a Q),BD (Ban),0
+Ops Lebanon (Ala'a Q),CFO (Haytham),0
+Ops Lebanon (Ala'a Q),Unit Manager (Majd H),1
+Ops Lebanon (Ala'a Q),PM Manager (Majd M),0
+Ops Lebanon (Ala'a Q),Ops Manager (Ayat),1
+Ops Lebanon (Ala'a Q),Field Manager (Ala'a H),1
+Ops Lebanon (Ala'a Q),DP Supervisor (Tareq),0
+Ops Lebanon (Ala'a Q),QA Officer (Manal),x
+Ops Lebanon (Ala'a Q),DP 1 (Odeh),1
+Ops Lebanon (Ala'a Q),DP 2 (Abdullah),0
+Ops Lebanon (Ala'a Q),DP 3 (Iyas),1
+Ops Lebanon (Ala'a Q),Ops 1 (Hala),x
+Ops Lebanon (Ala'a Q),Ops 2 (Rahaf),x
+Ops Lebanon (Ala'a Q),Ops 3 (Aya),x
+Ops Lebanon (Ala'a Q),Ops 4 (Hamzeh),x
+Ops Lebanon (Ala'a Q),PM 1 (Bana),1
+Ops Lebanon (Ala'a Q),PM 2 (Feryal),x
+Ops Lebanon (Ala'a Q),PM 3 (Leen),x
+Ops Lebanon (Ala'a Q),Ace 1 (Ala'a Z),0
+Ops Lebanon (Ala'a Q),Ace 2 (Qassas),1
+Ops Lebanon (Ala'a Q),QA Senior Hamdan,x
+Ops Lebanon (Ala'a Q),Accountant 1 (Dania),x
+Ops Lebanon (Ala'a Q),Accountant 2 (Balqees),x
+Ops Lebanon (Ala'a Q),Ops Egypt (Marwa),x
+Ops Lebanon (Ala'a Q),Pm Nigeria (Funmi),x
+Ops Lebanon (Ala'a Q),Ops (Ahmad Salam),x
+Ops Lebanon (Ala'a Q),Ops (Abd al baqe),x
+Ops Lebanon (Ala'a Q),Ops (Weklat),x
+Ops Lebanon (Ala'a Q),Analysis (Valeria),x
+Ops Lebanon (Ala'a Q),Analysis 1 (Marco),x
+Ops Lebanon (Ala'a Q),Analysis 2 (Manuel),x
+Ops Egypt (Marwa),CEO (Rana),0
+Ops Egypt (Marwa),Technical Manager (Anas),0
+Ops Egypt (Marwa),BD (Ban),0
+Ops Egypt (Marwa),CFO (Haytham),0
+Ops Egypt (Marwa),Unit Manager (Majd H),0
+Ops Egypt (Marwa),PM Manager (Majd M),0
+Ops Egypt (Marwa),Ops Manager (Ayat),1
+Ops Egypt (Marwa),Field Manager (Ala'a H),1
+Ops Egypt (Marwa),DP Supervisor (Tareq),0
+Ops Egypt (Marwa),QA Officer (Manal),x
+Ops Egypt (Marwa),DP 1 (Odeh),1
+Ops Egypt (Marwa),DP 2 (Abdullah),0
+Ops Egypt (Marwa),DP 3 (Iyas),0
+Ops Egypt (Marwa),Ops 1 (Hala),x
+Ops Egypt (Marwa),Ops 2 (Rahaf),x
+Ops Egypt (Marwa),Ops 3 (Aya),x
+Ops Egypt (Marwa),Ops 4 (Hamzeh),x
+Ops Egypt (Marwa),PM 1 (Bana),x
+Ops Egypt (Marwa),PM 2 (Feryal),x
+Ops Egypt (Marwa),PM 3 (Leen),x
+Ops Egypt (Marwa),Ace 1 (Ala'a Z),x
+Ops Egypt (Marwa),Ace 2 (Qassas),1
+Ops Egypt (Marwa),QA Senior Hamdan,x
+Ops Egypt (Marwa),Accountant 1 (Dania),x
+Ops Egypt (Marwa),Accountant 2 (Balqees),x
+Ops Egypt (Marwa),Ops Lebanon (Ala'a Q),x
+Ops Egypt (Marwa),Pm Nigeria (Funmi),x
+Ops Egypt (Marwa),Ops (Ahmad Salam),x
+Ops Egypt (Marwa),Ops (Abd al baqe),x
+Ops Egypt (Marwa),Ops (Weklat),x
+Ops Egypt (Marwa),Analysis (Valeria),x
+Ops Egypt (Marwa),Analysis 1 (Marco),x
+Ops Egypt (Marwa),Analysis 2 (Manuel),x
+Pm Nigeria (Funmi),CEO (Rana),1
+Pm Nigeria (Funmi),Technical Manager (Anas),1
+Pm Nigeria (Funmi),BD (Ban),0
+Pm Nigeria (Funmi),CFO (Haytham),1
+Pm Nigeria (Funmi),Unit Manager (Majd H),0
+Pm Nigeria (Funmi),PM Manager (Majd M),1
+Pm Nigeria (Funmi),Ops Manager (Ayat),x
+Pm Nigeria (Funmi),Field Manager (Ala'a H),x
+Pm Nigeria (Funmi),DP Supervisor (Tareq),1
+Pm Nigeria (Funmi),QA Officer (Manal),x
+Pm Nigeria (Funmi),DP 1 (Odeh),x
+Pm Nigeria (Funmi),DP 2 (Abdullah),1
+Pm Nigeria (Funmi),DP 3 (Iyas),x
+Pm Nigeria (Funmi),Ops 1 (Hala),x
+Pm Nigeria (Funmi),Ops 2 (Rahaf),x
+Pm Nigeria (Funmi),Ops 3 (Aya),x
+Pm Nigeria (Funmi),Ops 4 (Hamzeh),x
+Pm Nigeria (Funmi),PM 1 (Bana),x
+Pm Nigeria (Funmi),PM 2 (Feryal),x
+Pm Nigeria (Funmi),PM 3 (Leen),x
+Pm Nigeria (Funmi),Ace 1 (Ala'a Z),x
+Pm Nigeria (Funmi),Ace 2 (Qassas),x
+Pm Nigeria (Funmi),QA Senior Hamdan,1
+Pm Nigeria (Funmi),Accountant 1 (Dania),x
+Pm Nigeria (Funmi),Accountant 2 (Balqees),x
+Pm Nigeria (Funmi),Ops Lebanon (Ala'a Q),x
+Pm Nigeria (Funmi),Ops Egypt (Marwa),x
+Pm Nigeria (Funmi),Ops (Ahmad Salam),x
+Pm Nigeria (Funmi),Ops (Abd al baqe),1
+Pm Nigeria (Funmi),Ops (Weklat),1
+Pm Nigeria (Funmi),Analysis (Valeria),1
+Pm Nigeria (Funmi),Analysis 1 (Marco),1
+Pm Nigeria (Funmi),Analysis 2 (Manuel),1
+Ops (Ahmad Salam),CEO (Rana),x
+Ops (Ahmad Salam),Technical Manager (Anas),1
+Ops (Ahmad Salam),BD (Ban),0
+Ops (Ahmad Salam),CFO (Haytham),1
+Ops (Ahmad Salam),Unit Manager (Majd H),0
+Ops (Ahmad Salam),PM Manager (Majd M),0
+Ops (Ahmad Salam),Ops Manager (Ayat),x
+Ops (Ahmad Salam),Field Manager (Ala'a H),x
+Ops (Ahmad Salam),DP Supervisor (Tareq),1
+Ops (Ahmad Salam),QA Officer (Manal),x
+Ops (Ahmad Salam),DP 1 (Odeh),x
+Ops (Ahmad Salam),DP 2 (Abdullah),1
+Ops (Ahmad Salam),DP 3 (Iyas),x
+Ops (Ahmad Salam),Ops 1 (Hala),x
+Ops (Ahmad Salam),Ops 2 (Rahaf),x
+Ops (Ahmad Salam),Ops 3 (Aya),x
+Ops (Ahmad Salam),Ops 4 (Hamzeh),x
+Ops (Ahmad Salam),PM 1 (Bana),x
+Ops (Ahmad Salam),PM 2 (Feryal),x
+Ops (Ahmad Salam),PM 3 (Leen),x
+Ops (Ahmad Salam),Ace 1 (Ala'a Z),x
+Ops (Ahmad Salam),Ace 2 (Qassas),x
+Ops (Ahmad Salam),QA Senior Hamdan,1
+Ops (Ahmad Salam),Accountant 1 (Dania),x
+Ops (Ahmad Salam),Accountant 2 (Balqees),x
+Ops (Ahmad Salam),Ops Lebanon (Ala'a Q),x
+Ops (Ahmad Salam),Ops Egypt (Marwa),x
+Ops (Ahmad Salam),Pm Nigeria (Funmi),x
+Ops (Ahmad Salam),Ops (Abd al baqe),1
+Ops (Ahmad Salam),Ops (Weklat),1
+Ops (Ahmad Salam),Analysis (Valeria),x
+Ops (Ahmad Salam),Analysis 1 (Marco),x
+Ops (Ahmad Salam),Analysis 2 (Manuel),x
+Ops (Abd al baqe),CEO (Rana),x
+Ops (Abd al baqe),Technical Manager (Anas),1
+Ops (Abd al baqe),BD (Ban),0
+Ops (Abd al baqe),CFO (Haytham),1
+Ops (Abd al baqe),Unit Manager (Majd H),0
+Ops (Abd al baqe),PM Manager (Majd M),0
+Ops (Abd al baqe),Ops Manager (Ayat),x
+Ops (Abd al baqe),Field Manager (Ala'a H),x
+Ops (Abd al baqe),DP Supervisor (Tareq),1
+Ops (Abd al baqe),QA Officer (Manal),x
+Ops (Abd al baqe),DP 1 (Odeh),x
+Ops (Abd al baqe),DP 2 (Abdullah),1
+Ops (Abd al baqe),DP 3 (Iyas),x
+Ops (Abd al baqe),Ops 1 (Hala),x
+Ops (Abd al baqe),Ops 2 (Rahaf),x
+Ops (Abd al baqe),Ops 3 (Aya),x
+Ops (Abd al baqe),Ops 4 (Hamzeh),x
+Ops (Abd al baqe),PM 1 (Bana),x
+Ops (Abd al baqe),PM 2 (Feryal),x
+Ops (Abd al baqe),PM 3 (Leen),x
+Ops (Abd al baqe),Ace 1 (Ala'a Z),x
+Ops (Abd al baqe),Ace 2 (Qassas),x
+Ops (Abd al baqe),QA Senior Hamdan,1
+Ops (Abd al baqe),Accountant 1 (Dania),x
+Ops (Abd al baqe),Accountant 2 (Balqees),x
+Ops (Abd al baqe),Ops Lebanon (Ala'a Q),x
+Ops (Abd al baqe),Ops Egypt (Marwa),x
+Ops (Abd al baqe),Pm Nigeria (Funmi),1
+Ops (Abd al baqe),Ops (Ahmad Salam),1
+Ops (Abd al baqe),Ops (Weklat),1
+Ops (Abd al baqe),Analysis (Valeria),x
+Ops (Abd al baqe),Analysis 1 (Marco),x
+Ops (Abd al baqe),Analysis 2 (Manuel),x
+Ops (Weklat),CEO (Rana),x
+Ops (Weklat),Technical Manager (Anas),1
+Ops (Weklat),BD (Ban),0
+Ops (Weklat),CFO (Haytham),1
+Ops (Weklat),Unit Manager (Majd H),0
+Ops (Weklat),PM Manager (Majd M),0
+Ops (Weklat),Ops Manager (Ayat),x
+Ops (Weklat),Field Manager (Ala'a H),x
+Ops (Weklat),DP Supervisor (Tareq),1
+Ops (Weklat),QA Officer (Manal),x
+Ops (Weklat),DP 1 (Odeh),x
+Ops (Weklat),DP 2 (Abdullah),1
+Ops (Weklat),DP 3 (Iyas),x
+Ops (Weklat),Ops 1 (Hala),x
+Ops (Weklat),Ops 2 (Rahaf),x
+Ops (Weklat),Ops 3 (Aya),x
+Ops (Weklat),Ops 4 (Hamzeh),x
+Ops (Weklat),PM 1 (Bana),x
+Ops (Weklat),PM 2 (Feryal),x
+Ops (Weklat),PM 3 (Leen),x
+Ops (Weklat),Ace 1 (Ala'a Z),x
+Ops (Weklat),Ace 2 (Qassas),x
+Ops (Weklat),QA Senior Hamdan,1
+Ops (Weklat),Accountant 1 (Dania),x
+Ops (Weklat),Accountant 2 (Balqees),x
+Ops (Weklat),Ops Lebanon (Ala'a Q),x
+Ops (Weklat),Ops Egypt (Marwa),x
+Ops (Weklat),Pm Nigeria (Funmi),1
+Ops (Weklat),Ops (Ahmad Salam),1
+Ops (Weklat),Ops (Abd al baqe),1
+Ops (Weklat),Analysis (Valeria),x
+Ops (Weklat),Analysis 1 (Marco),x
+Ops (Weklat),Analysis 2 (Manuel),x
+Analysis (Valeria),CEO (Rana),1
+Analysis (Valeria),Technical Manager (Anas),1
+Analysis (Valeria),BD (Ban),x
+Analysis (Valeria),CFO (Haytham),x
+Analysis (Valeria),Unit Manager (Majd H),x
+Analysis (Valeria),PM Manager (Majd M),1
+Analysis (Valeria),Ops Manager (Ayat),x
+Analysis (Valeria),Field Manager (Ala'a H),x
+Analysis (Valeria),DP Supervisor (Tareq),1
+Analysis (Valeria),QA Officer (Manal),x
+Analysis (Valeria),DP 1 (Odeh),1
+Analysis (Valeria),DP 2 (Abdullah),1
+Analysis (Valeria),DP 3 (Iyas),x
+Analysis (Valeria),Ops 1 (Hala),x
+Analysis (Valeria),Ops 2 (Rahaf),x
+Analysis (Valeria),Ops 3 (Aya),x
+Analysis (Valeria),Ops 4 (Hamzeh),x
+Analysis (Valeria),PM 1 (Bana),1
+Analysis (Valeria),PM 2 (Feryal),1
+Analysis (Valeria),PM 3 (Leen),1
+Analysis (Valeria),Ace 1 (Ala'a Z),x
+Analysis (Valeria),Ace 2 (Qassas),x
+Analysis (Valeria),QA Senior Hamdan,1
+Analysis (Valeria),Accountant 1 (Dania),x
+Analysis (Valeria),Accountant 2 (Balqees),x
+Analysis (Valeria),Ops Lebanon (Ala'a Q),x
+Analysis (Valeria),Ops Egypt (Marwa),x
+Analysis (Valeria),Pm Nigeria (Funmi),1
+Analysis (Valeria),Ops (Ahmad Salam),x
+Analysis (Valeria),Ops (Abd al baqe),x
+Analysis (Valeria),Ops (Weklat),x
+Analysis (Valeria),Analysis 1 (Marco),1
+Analysis (Valeria),Analysis 2 (Manuel),1
+Analysis 1 (Marco),CEO (Rana),x
+Analysis 1 (Marco),Technical Manager (Anas),1
+Analysis 1 (Marco),BD (Ban),x
+Analysis 1 (Marco),CFO (Haytham),x
+Analysis 1 (Marco),Unit Manager (Majd H),x
+Analysis 1 (Marco),PM Manager (Majd M),1
+Analysis 1 (Marco),Ops Manager (Ayat),x
+Analysis 1 (Marco),Field Manager (Ala'a H),x
+Analysis 1 (Marco),DP Supervisor (Tareq),1
+Analysis 1 (Marco),QA Officer (Manal),x
+Analysis 1 (Marco),DP 1 (Odeh),1
+Analysis 1 (Marco),DP 2 (Abdullah),1
+Analysis 1 (Marco),DP 3 (Iyas),1
+Analysis 1 (Marco),Ops 1 (Hala),x
+Analysis 1 (Marco),Ops 2 (Rahaf),x
+Analysis 1 (Marco),Ops 3 (Aya),x
+Analysis 1 (Marco),Ops 4 (Hamzeh),x
+Analysis 1 (Marco),PM 1 (Bana),1
+Analysis 1 (Marco),PM 2 (Feryal),1
+Analysis 1 (Marco),PM 3 (Leen),1
+Analysis 1 (Marco),Ace 1 (Ala'a Z),x
+Analysis 1 (Marco),Ace 2 (Qassas),x
+Analysis 1 (Marco),QA Senior Hamdan,1
+Analysis 1 (Marco),Accountant 1 (Dania),x
+Analysis 1 (Marco),Accountant 2 (Balqees),x
+Analysis 1 (Marco),Ops Lebanon (Ala'a Q),x
+Analysis 1 (Marco),Ops Egypt (Marwa),x
+Analysis 1 (Marco),Pm Nigeria (Funmi),1
+Analysis 1 (Marco),Ops (Ahmad Salam),x
+Analysis 1 (Marco),Ops (Abd al baqe),x
+Analysis 1 (Marco),Ops (Weklat),x
+Analysis 1 (Marco),Analysis (Valeria),1
+Analysis 1 (Marco),Analysis 2 (Manuel),1
+Analysis 2 (Manuel),CEO (Rana),x
+Analysis 2 (Manuel),Technical Manager (Anas),1
+Analysis 2 (Manuel),BD (Ban),x
+Analysis 2 (Manuel),CFO (Haytham),x
+Analysis 2 (Manuel),Unit Manager (Majd H),x
+Analysis 2 (Manuel),PM Manager (Majd M),1
+Analysis 2 (Manuel),Ops Manager (Ayat),x
+Analysis 2 (Manuel),Field Manager (Ala'a H),x
+Analysis 2 (Manuel),DP Supervisor (Tareq),1
+Analysis 2 (Manuel),QA Officer (Manal),x
+Analysis 2 (Manuel),DP 1 (Odeh),x
+Analysis 2 (Manuel),DP 2 (Abdullah),0
+Analysis 2 (Manuel),DP 3 (Iyas),1
+Analysis 2 (Manuel),Ops 1 (Hala),x
+Analysis 2 (Manuel),Ops 2 (Rahaf),x
+Analysis 2 (Manuel),Ops 3 (Aya),x
+Analysis 2 (Manuel),Ops 4 (Hamzeh),x
+Analysis 2 (Manuel),PM 1 (Bana),1
+Analysis 2 (Manuel),PM 2 (Feryal),1
+Analysis 2 (Manuel),PM 3 (Leen),1
+Analysis 2 (Manuel),Ace 1 (Ala'a Z),x
+Analysis 2 (Manuel),Ace 2 (Qassas),x
+Analysis 2 (Manuel),QA Senior Hamdan,1
+Analysis 2 (Manuel),Accountant 1 (Dania),x
+Analysis 2 (Manuel),Accountant 2 (Balqees),x
+Analysis 2 (Manuel),Ops Lebanon (Ala'a Q),x
+Analysis 2 (Manuel),Ops Egypt (Marwa),x
+Analysis 2 (Manuel),Pm Nigeria (Funmi),1
+Analysis 2 (Manuel),Ops (Ahmad Salam),x
+Analysis 2 (Manuel),Ops (Abd al baqe),x
+Analysis 2 (Manuel),Ops (Weklat),x
+Analysis 2 (Manuel),Analysis (Valeria),1
+Analysis 2 (Manuel),Analysis 1 (Marco),1

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Employee Evaluation System{% endblock %}</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Mindset Theme CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mindset-theme.css') }}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: var(--panel); border-bottom: 1px solid var(--divider);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('dashboard') }}">
+                <i class="fas fa-clipboard-check"></i> Employee Evaluation System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('dashboard') }}">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a>
+                        </li>
+                        {% if current_user.role == 'admin' %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-cog"></i> Admin
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ url_for('list_employees') }}">Employees</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('list_kpis') }}">KPIs</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('kpi_permissions') }}">KPI Permissions</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('list_cycles') }}">Evaluation Cycles</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('kpi_results') }}"><i class="fas fa-check-circle"></i> KPI Results / Approve Evaluations</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('my_360_evaluations') }}">
+                                <i class="fas fa-comments"></i> 360 Evaluations
+                            </a>
+                        </li>
+                        {% set emp_role = current_user.employee.role %}
+                        {% if emp_role in ['CEO', 'Technical Manager', 'Unit Manager', 'DP Supervisor', 'Operations Manager', 'PM Manager', 'CFO', 'Analysis'] %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="kpiDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-chart-line"></i> KPIs
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('my_kpis') }}">
+                                    <i class="fas fa-list"></i> My KPIs
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('create_kpi') }}">
+                                    <i class="fas fa-plus"></i> Create KPI
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ url_for('my_kpi_evaluations') }}">
+                                    <i class="fas fa-clipboard-check"></i> KPI Evaluations
+                                </a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('kpi_results') }}">
+                                    <i class="fas fa-chart-bar"></i> KPI Results
+                                </a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% if emp_role == 'CEO' or current_user.role == 'admin' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('pending_kpi_approvals') }}">
+                                <i class="fas fa-check-circle"></i> Pending Approvals
+                                {% if pending_kpi_count and pending_kpi_count > 0 %}
+                                    <span class="badge bg-warning">{{ pending_kpi_count }}</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if emp_role in ['CEO', 'Technical Manager'] %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('pending_kpi_evaluation_approvals') }}">
+                                <i class="fas fa-clipboard-check"></i> Approve KPI Evaluations
+                                {% if pending_kpi_evaluation_count and pending_kpi_evaluation_count > 0 %}
+                                    <span class="badge bg-warning">{{ pending_kpi_evaluation_count }}</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if emp_role == 'CEO' or current_user.role == 'admin' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('list_360_questions') }}">
+                                <i class="fas fa-question-circle"></i> 360 Questions
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="resultsDropdown" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-chart-bar"></i> Results
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ url_for('my_results') }}">
+                                    <i class="fas fa-user"></i> My Results
+                                </a></li>
+                                {% set emp_role = current_user.employee.role %}
+                                {% if emp_role in ['CEO', 'Technical Manager', 'Unit Manager', 'DP Supervisor', 'Operations Manager', 'PM Manager', 'CFO'] or current_user.role in ['admin', 'ceo', 'technical_manager', 'unit_manager', 'department_manager'] %}
+                                <li><a class="dropdown-item" href="{{ url_for('team_results') }}">
+                                    <i class="fas fa-users"></i> Team Results
+                                </a></li>
+                                {% endif %}
+                                {% if emp_role in ['CEO', 'Technical Manager'] or current_user.role in ['admin', 'ceo', 'technical_manager'] %}
+                                <li><a class="dropdown-item" href="{{ url_for('organization_results') }}">
+                                    <i class="fas fa-building"></i> Organization Results
+                                </a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">{{ current_user.employee.full_name }} ({{ current_user.role }})</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}My KPIs - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-list"></i> My KPIs</h2>
+    
+    <div class="mb-3">
+        <a href="{{ url_for('create_kpi') }}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create New KPI
+        </a>
+    </div>
+    
+    {% if kpis_by_employee %}
+        {% for emp, emp_data in kpis_by_employee.items() %}
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <h5 class="mb-0"><i class="fas fa-user"></i> {{ emp.full_name }} <small class="text-muted">({{ emp.role }})</small></h5>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="{{ url_for('create_kpi', for_employee=emp.employee_id) }}" class="btn btn-sm btn-outline-primary" title="Add KPI for {{ emp.full_name }}">
+                        <i class="fas fa-plus"></i> Add KPI
+                    </a>
+                    <span class="badge bg-{{ 'success' if emp_data.total_weight == 100 else 'warning' if emp_data.total_weight > 0 else 'secondary' }}">
+                        Total: {{ "%.1f"|format(emp_data.total_weight) }}%
+                    </span>
+                    {% set remaining = emp_data.remaining_weight %}
+                    {% if remaining > 0 %}
+                        <span class="badge bg-{{ 'danger' if remaining < 10 else 'warning' if remaining < 20 else 'info' }} ms-2">
+                            Remaining: {{ "%.1f"|format(remaining) }}%
+                        </span>
+                    {% elif emp_data.total_weight > 100 %}
+                        <span class="badge bg-danger ms-2">
+                            <i class="fas fa-exclamation-triangle"></i> EXCEEDS 100%!
+                        </span>
+                    {% else %}
+                        <span class="badge bg-success ms-2">
+                            <i class="fas fa-check"></i> Complete (100%)
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>KPI Name</th>
+                                <th>Description</th>
+                                <th>Weight</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for kpi in emp_data.kpis %}
+                            <tr>
+                                <td>
+                                    <strong>{{ kpi.kpi_name }}</strong>
+                                </td>
+                                <td>{{ kpi.description or '-' }}</td>
+                                <td>{{ kpi.weight }}%</td>
+                                <td>
+                                    {% if kpi.status == 'draft' %}
+                                        <span class="badge bg-secondary">Draft</span>
+                                    {% elif kpi.status == 'pending_review' %}
+                                        <span class="badge bg-warning">Pending CEO Approval</span>
+                                    {% elif kpi.status == 'approved' %}
+                                        <span class="badge bg-success">Approved</span>
+                                    {% elif kpi.status == 'declined' %}
+                                        <span class="badge bg-danger">Declined</span>
+                                        {% if kpi.decline_reason %}
+                                            <br><small class="text-muted">{{ kpi.decline_reason }}</small>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>{{ kpi.created_at.strftime('%Y-%m-%d') if kpi.created_at else '-' }}</td>
+                                <td>
+                                    {% if kpi.is_default and (kpi.created_by is none or kpi.created_by != manager.employee_id) %}
+                                        {# Default KPI - can edit, submit, or delete #}
+                                        <a href="{{ url_for('edit_kpi', kpi_id=kpi.kpi_id) }}" class="btn btn-sm btn-outline-primary" title="Edit this default KPI">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <form method="POST" action="{{ url_for('submit_kpi_for_approval', kpi_id=kpi.kpi_id) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Submit this KPI for CEO approval?')" title="Submit for approval">
+                                                <i class="fas fa-paper-plane"></i> Submit
+                                            </button>
+                                        </form>
+                                        <form method="POST" action="{{ url_for('delete_kpi', kpi_id=kpi.kpi_id) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this KPI?')" title="Delete">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    {% elif kpi.status == 'draft' %}
+                                        <a href="{{ url_for('edit_kpi', kpi_id=kpi.kpi_id) }}" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <form method="POST" action="{{ url_for('submit_kpi_for_approval', kpi_id=kpi.kpi_id) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Submit this KPI for CEO approval?')">
+                                                <i class="fas fa-paper-plane"></i> Submit
+                                            </button>
+                                        </form>
+                                        <form method="POST" action="{{ url_for('delete_kpi', kpi_id=kpi.kpi_id) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this KPI?')">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    {% elif kpi.status == 'declined' %}
+                                        <a href="{{ url_for('edit_kpi', kpi_id=kpi.kpi_id) }}" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i> Edit & Resubmit
+                                        </a>
+                                    {% elif kpi.status == 'approved' and kpi.created_by == manager.employee_id %}
+                                        <a href="{{ url_for('edit_kpi', kpi_id=kpi.kpi_id) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <form method="POST" action="{{ url_for('delete_kpi', kpi_id=kpi.kpi_id) }}" style="display: inline;">
+                                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this approved KPI?')" title="Delete">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </form>
+                                    {% elif kpi.status == 'approved' %}
+                                        <span class="text-muted small">—</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% elif not assignable_employees %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> You have no direct reports. KPIs are created for your subordinates.
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> You haven't created any KPIs yet. 
+            <a href="{{ url_for('create_kpi') }}">Create your first KPI</a> for your team members.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

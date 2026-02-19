@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Employees - Employee Evaluation System{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2 class="mb-4"><i class="fas fa-upload"></i> Upload Employees</h2>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>Upload Employee Data (CSV or Excel)</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-label">Select File</label>
+                    <input type="file" class="form-control" id="file" name="file" accept=".csv,.xlsx,.xls" required>
+                    <div class="form-text">
+                        Supported formats: CSV, XLSX, XLS. Required columns: full_name, email, department, role, join_date
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Upload
+                </button>
+                <a href="{{ url_for('list_employees') }}" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </form>
+            
+            <div class="mt-4">
+                <h6>Example CSV Format:</h6>
+                <pre class="bg-light p-3">
+full_name,email,department,role,join_date
+John Doe,john.doe@company.com,Engineering,Developer,2024-01-15
+Jane Smith,jane.smith@company.com,Marketing,Manager,2023-06-20
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
