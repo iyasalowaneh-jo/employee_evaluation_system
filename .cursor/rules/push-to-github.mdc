@@ -1,0 +1,17 @@
+---
+description: Commit and push code changes to GitHub after making edits
+alwaysApply: true
+---
+
+# Push changes to GitHub
+
+When you complete a set of code changes to this project (employee_evaluation_system):
+
+1. **Stage** all changes: `git add -A`
+2. **Commit** with a short, clear message describing what changed (e.g. "Fix completion rate to include 360", "Add export for cycle results")
+3. **Push** to GitHub: `git push origin` (or `git push`)
+
+- Run these from the project root: `c:\Users\DP\employee_evaluation_system`
+- Use PowerShell-compatible commands (e.g. `;` not `&&` for chaining if needed)
+- If there are no changes or nothing to commit, skip the commit/push
+- Request `git_write` for add/commit and `network` or `full_network` for push
